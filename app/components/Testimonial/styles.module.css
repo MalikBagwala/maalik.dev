@@ -1,0 +1,9 @@
+.testimonial {
+    word-break: break-word;
+    transition: all 0.4s ease;
+  }
+  
+  .testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px 0 rgba(14,30,37,0.2);
+  }

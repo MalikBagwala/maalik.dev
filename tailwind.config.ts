@@ -4,9 +4,14 @@ export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        gray: {
+          50: "#f3f2ef",
+        },
+      },
       fontFamily: {
         sans: [
-          '"Inter"',
+          '"Lato"',
           "ui-sans-serif",
           "system-ui",
           "sans-serif",
