@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,html {
+  @apply bg-gray-50 min-h-screen w-full;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
