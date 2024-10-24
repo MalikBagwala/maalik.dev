@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import Hero from "./Hero";
 
 export const meta: MetaFunction = () => {
   return [
@@ -25,8 +26,9 @@ export const TestSection = () => {
 };
 export default function Index() {
   return (
-    <div className="bg-gray-100 content">
-      <TestSection />
+    <div className="content bg-gray-50">
+      <Hero />
+      {/* <TestSection /> */}
     </div>
   );
 }
