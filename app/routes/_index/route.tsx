@@ -26,7 +26,7 @@ export const TestSection = () => {
 };
 export default function Index() {
   return (
-    <div className="content bg-gray-50">
+    <div>
       <Hero />
       {/* <TestSection /> */}
     </div>
