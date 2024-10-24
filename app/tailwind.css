@@ -1,6 +1,6 @@
 @tailwind base;
 @tailwind components;
 .content{
-  @apply pt-[calc(63px+2rem)] pb-8;
+  @apply pt-[calc(79px+2rem)] pb-8;
 }
 @tailwind utilities;
