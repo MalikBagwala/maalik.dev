@@ -32,9 +32,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="min-h-screen bg-white text-gray-700">
         <Navbar />
-        {children}
+        <main>{children}</main>
         <ScrollRestoration />
         <Scripts />
       </body>

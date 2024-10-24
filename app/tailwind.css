@@ -1,17 +1,6 @@
 @tailwind base;
 @tailwind components;
+.content{
+  @apply pt-[calc(63px+2rem)] pb-8;
+}
 @tailwind utilities;
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body,html {
-  @apply bg-white min-h-screen w-full text-gray-700;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-}
