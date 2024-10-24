@@ -9,7 +9,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="h-screen w-full bg-teal-100 text-teal-900 font-bold">
+    <div className="h-screen w-full bg-gray-100 text-teal-900 font-bold">
       <div className="container mx-auto px-4 flex justify-center items-center h-full">
         <article className="prose">
           <h1>Garlic bread with cheese: What the science tells us</h1>

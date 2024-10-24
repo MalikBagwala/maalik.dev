@@ -3,10 +3,17 @@ import type { Config } from "tailwindcss";
 export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1172px",
+    },
     extend: {
-      colors: {
-        gray: {
-          50: "#f3f2ef",
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1.5rem",
         },
       },
       fontFamily: {
