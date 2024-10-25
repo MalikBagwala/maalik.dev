@@ -15,7 +15,9 @@ const Hero = () => {
                 className="w-6"
               />
             </h3>
-            <h1 className="text-4xl font-bold">Fullstack Engineer (ex-CTO)</h1>
+            <h1 className="text-4xl font-bold text-gray-800">
+              Fullstack Engineer (ex-CTO)
+            </h1>
             <h4 className="text-balance text-2xl text-gray-500">
               I help people and brands reach their business goals by designing &
               building customer-centric software products and interactive
