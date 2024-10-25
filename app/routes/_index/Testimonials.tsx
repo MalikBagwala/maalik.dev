@@ -1,5 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import Section from "~/components/Section/Section";
+import Star from "~/icons/Star";
 
 const TESTIMONIALS = [
   {
@@ -23,6 +24,7 @@ const TESTIMONIALS = [
     name: "Liam Hart",
     avatar: "https://picsum.photos/100/102",
     designation: "Product Manager @ Wave",
+    highlighted: true,
     comment:
       "Excellent attention to detail! Malik transformed our initial ideas into an amazing final product.",
   },
@@ -36,6 +38,8 @@ const TESTIMONIALS = [
   },
   {
     id: 5,
+    highlighted: true,
+
     name: "Ava Robinson",
     avatar: "https://picsum.photos/100/104",
     designation: "Creative Director @ Visualize",
@@ -53,6 +57,8 @@ const TESTIMONIALS = [
   {
     id: 7,
     name: "Mia Johnson",
+    highlighted: true,
+
     avatar: "https://picsum.photos/100/106",
     designation: "HR Specialist @ Fintrack",
     comment:
@@ -84,6 +90,8 @@ const TESTIMONIALS = [
   },
   {
     id: 11,
+    highlighted: true,
+
     name: "Avery Clark",
     avatar: "https://picsum.photos/100/110",
     designation: "CTO @ GridWorks",
@@ -92,6 +100,8 @@ const TESTIMONIALS = [
   },
   {
     id: 12,
+    highlighted: true,
+
     name: "Lucas Reed",
     avatar: "https://picsum.photos/100/111",
     designation: "Frontend Developer @ InnoSoft",
@@ -100,6 +110,8 @@ const TESTIMONIALS = [
   },
   {
     id: 13,
+    highlighted: true,
+
     name: "Harper Bailey",
     avatar: "https://picsum.photos/100/112",
     designation: "CFO @ GoGreen",
@@ -150,20 +162,21 @@ const Testimonials = () => {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-12">
         {TESTIMONIALS.map((testimonial) => {
+          const isHighlight = testimonial.highlighted ? true : false;
           return (
             <div
               key={testimonial.id}
               id={`testimonials-${testimonial.id}`}
-              className="flex justify-center items-center"
+              className="flex justify-center items-center "
             >
               <div
                 style={{
                   boxShadow: "0 2px 4px 0 rgba(14, 30, 37, 0.12)",
                 }}
                 className={twMerge(
-                  "rounded-xl px-6 py-8 flex flex-col justify-between text-gray-500 h-fit bg-white",
-                  testimonial.highlighted &&
-                    "bg-gradient-to-r from-teal-500 to-blue-500 text-gray-50"
+                  "rounded-xl px-6 py-8 flex flex-col justify-between text-gray-500 h-fit bg-white relative",
+                  isHighlight &&
+                    "bg-gradient-to-r from-teal-600 to-blue-600 text-gray-50"
                 )}
               >
                 <blockquote className="text-lg text-balance text-center leading-relaxed">
@@ -183,7 +196,7 @@ const Testimonials = () => {
                     <h6
                       className={twMerge(
                         "text-gray-800 font-bold",
-                        testimonial.highlighted && "text-white"
+                        isHighlight && "text-white"
                       )}
                     >
                       {testimonial.name}
@@ -191,6 +204,26 @@ const Testimonials = () => {
                     <p>{testimonial.designation}</p>
                   </div>
                 </footer>
+                {isHighlight && (
+                  <>
+                    <Star
+                      className="absolute top-6 -left-[12px] fill-amber-400"
+                      height={30}
+                    />
+                    <Star
+                      className="absolute -top-2 left-8 fill-gray-700"
+                      height={20}
+                    />
+                    <Star
+                      className="absolute top-6 -right-[12px] fill-amber-400"
+                      height={12}
+                    />
+                    <Star
+                      className="absolute -bottom-5 right-12 fill-gray-700"
+                      height={40}
+                    />
+                  </>
+                )}
               </div>
             </div>
           );
