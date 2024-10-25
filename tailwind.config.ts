@@ -10,6 +10,11 @@ export default {
       xl: "1172px",
     },
     extend: {
+      colors: {
+        gray: {
+          50: "rgb(243, 242, 239)",
+        },
+      },
       container: {
         center: true,
         padding: {

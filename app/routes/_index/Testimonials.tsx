@@ -148,47 +148,50 @@ const Testimonials = () => {
       title="Testimonials"
       subtitle="Hear from our clients about their experiences and success stories."
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-12">
         {TESTIMONIALS.map((testimonial) => {
           return (
             <div
-              style={{
-                boxShadow:
-                  "0 8px 16px 0 rgba(0, 0, 0, .05), 0 16px 34px 0 rgba(0, 0, 0, .1)",
-              }}
-              className={twMerge(
-                "rounded-xl border px-6 py-8 flex flex-col justify-between text-gray-500",
-                testimonial.highlighted &&
-                  "bg-gradient-to-r from-teal-500 to-blue-500 text-gray-50"
-              )}
               key={testimonial.id}
               id={`testimonials-${testimonial.id}`}
+              className="flex justify-center items-center"
             >
-              <blockquote className="text-lg text-balance text-center leading-relaxed">
-                {'"'}
-                {testimonial.comment}
-                {'"'}
-              </blockquote>
-              <footer className="flex items-center gap-4 justify-center mt-8">
-                <img
-                  className="rounded-full flex-shrink-0 flex-grow-0"
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  height={40}
-                  width={40}
-                />
-                <div>
-                  <h6
-                    className={twMerge(
-                      "text-gray-800 font-bold",
-                      testimonial.highlighted && "text-white"
-                    )}
-                  >
-                    {testimonial.name}
-                  </h6>
-                  <p>{testimonial.designation}</p>
-                </div>
-              </footer>
+              <div
+                style={{
+                  boxShadow: "0 2px 4px 0 rgba(14, 30, 37, 0.12)",
+                }}
+                className={twMerge(
+                  "rounded-xl px-6 py-8 flex flex-col justify-between text-gray-500 h-fit bg-white",
+                  testimonial.highlighted &&
+                    "bg-gradient-to-r from-teal-500 to-blue-500 text-gray-50"
+                )}
+              >
+                <blockquote className="text-lg text-balance text-center leading-relaxed">
+                  {'"'}
+                  {testimonial.comment}
+                  {'"'}
+                </blockquote>
+                <footer className="flex items-center gap-4 justify-center mt-8">
+                  <img
+                    className="rounded-full flex-shrink-0 flex-grow-0 object-cover w-12 h-12"
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    height={40}
+                    width={40}
+                  />
+                  <div>
+                    <h6
+                      className={twMerge(
+                        "text-gray-800 font-bold",
+                        testimonial.highlighted && "text-white"
+                      )}
+                    >
+                      {testimonial.name}
+                    </h6>
+                    <p>{testimonial.designation}</p>
+                  </div>
+                </footer>
+              </div>
             </div>
           );
         })}
