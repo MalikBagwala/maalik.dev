@@ -54,4 +54,8 @@
   width: 10px;
   height: 10px;
 }
+
+.social{
+  @apply fill-[rgba(0,8,61,0.7)] hover:fill-blue-500;
+}
 @tailwind utilities;

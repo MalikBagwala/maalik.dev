@@ -7,15 +7,17 @@ const Navbar = () => {
         <div className="flex text-xl">
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">
             <img src="/logo.webp" height={30} width={30} alt="Logo" />
-            <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-700 font-bold">
-              maalik.dev
-            </h1>
+            <Link to={"/"}>
+              <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-700 font-bold">
+                maalik.dev
+              </h1>
+            </Link>
           </div>
           <div className="flex gap-6">
             <Link to={"#projects"}>Projects</Link>
             <Link to={"#testimonials"}>Testimonials</Link>
             <Link to={"#skills"}>Skills</Link>
-            <Link to={"#work"}>Contact</Link>
+            <Link to={"#contact"}>Contact</Link>
           </div>
         </div>
       </div>
