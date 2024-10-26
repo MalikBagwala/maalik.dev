@@ -38,7 +38,8 @@ const Footer = () => {
         </a>
         <p>
           Jamali Residency
-          <br /> Singapur Garden, Nashik <br />
+          <br /> Nashik, India
+          <br />
           422011
         </p>
         {/* <p>GST NO - NA</p> */}
