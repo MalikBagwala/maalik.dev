@@ -3,6 +3,9 @@ import type { Config } from "tailwindcss";
 export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    boxShadow: {
+      DEFAULT: "0 2px 4px 0 rgba(14, 30, 37, 0.12)",
+    },
     screens: {
       sm: "640px",
       md: "768px",

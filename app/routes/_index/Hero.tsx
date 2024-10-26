@@ -3,7 +3,7 @@ import Button from "~/components/Button";
 
 const Hero = () => {
   return (
-    <section className="border-b border-gray-200 bg-gray-50 content">
+    <section className="border-b border-gray-200 content">
       <div className="container">
         <div className="flex justify-between min-h-[calc(70vh)] pt-20">
           <div className="flex flex-col gap-4">
