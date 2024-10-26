@@ -25,12 +25,14 @@ const Section = ({
       )}
     >
       <div className="container">
-        <header className="w-full text-center flex flex-col gap-y-2 mb-10">
-          <h2 className="text-4xl font-bold text-gray-800">{title}</h2>
-          {subtitle && (
-            <p className="text-2xl text-gray-500 text-balance">{subtitle}</p>
-          )}
-        </header>
+        {title && (
+          <header className="w-full text-center flex flex-col gap-y-2 mb-10">
+            <h2 className="text-4xl font-bold text-gray-800">{title}</h2>
+            {subtitle && (
+              <p className="text-2xl text-gray-500 text-balance">{subtitle}</p>
+            )}
+          </header>
+        )}
         <main {...mainProps}>{children}</main>
       </div>
     </section>
