@@ -60,7 +60,7 @@ const Skills = () => {
       title="Skills"
       subtitle="For those who know what they’re looking for.."
     >
-      <div className="flex flex-wrap">
+      <ul className="flex flex-wrap">
         {SKILLS.map((skill) => {
           return (
             <li
@@ -81,7 +81,7 @@ const Skills = () => {
             </li>
           );
         })}
-      </div>
+      </ul>
     </Section>
   );
 };
