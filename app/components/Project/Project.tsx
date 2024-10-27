@@ -32,7 +32,7 @@ const Project = ({
               href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="uppercase text-2xl font-bold tracking-wider text-white backdrop-blur-md backdrop-saturate-100 backdrop-brightness-[0.7] px-2 rounded-full transition duration-200 transform hover:scale-105"
+              className="uppercase text-2xl font-bold tracking-wider text-white backdrop-blur-md backdrop-saturate-100 backdrop-brightness-[0.7] hover:backdrop-brightness-[0.4] px-2 rounded-full transition duration-200 transform hover:scale-105"
             >
               {title}
             </a>
