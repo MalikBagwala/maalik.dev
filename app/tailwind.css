@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
-
+.custom-focus {
+  @apply focus:outline-dashed focus:outline-blue-500 focus:outline-2 focus:outline-offset-2;
+}
+*{
+  @apply custom-focus;
+}
 .content {
   @apply pt-[calc(79px+2rem)] pb-8;
 }
