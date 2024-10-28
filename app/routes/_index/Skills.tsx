@@ -66,7 +66,7 @@ const Skills = () => {
             <li
               style={{
                 boxShadow:
-                  "0 2px 6px 0 rgba(0, 0, 0, .05), 0 0 3px 0 rgba(0, 0, 0, .1);",
+                  "0 2px 6px 0 rgba(0, 0, 0, .05), 0 0 3px 0 rgba(0, 0, 0, .1)",
               }}
               key={skill.name}
               className="p-4 rounded-lg flex flex-col items-center justify-center m-2 w-32 h-32 gap-4"
