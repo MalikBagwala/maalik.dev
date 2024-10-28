@@ -26,10 +26,11 @@ const Hero = () => {
     loop: { reverse: true },
   });
 
-  // Fade-in animation for right image
+  // Fade-in animation with slide-up for right image
   const fadeInImage = useSpring({
     opacity: isMounted ? 1 : 0,
-    from: { opacity: 0 },
+    transform: isMounted ? "translateY(0px)" : "translateY(20px)",
+    from: { opacity: 0, transform: "translateY(20px)" },
     config: { mass: 1, tension: 200, friction: 20 },
   });
 
@@ -78,14 +79,15 @@ const Hero = () => {
               </animated.div>
             </div>
           </div>
-          <animated.div style={fadeInImage}>
+          <div>
             <animated.img
+              style={fadeInImage}
               className="h-[50vh] w-auto object-cover"
-              src="https://picsum.photos/id/237/1700/1700"
-              alt=""
-              loading={"lazy"}
+              src="https://picsum.photos/id/237/500/500"
+              alt="Avatar"
+              loading={"eager"}
             />
-          </animated.div>
+          </div>
         </div>
       </div>
     </section>
