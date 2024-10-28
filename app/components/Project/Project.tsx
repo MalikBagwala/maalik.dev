@@ -1,10 +1,8 @@
-import { useInView } from "react-intersection-observer";
-import { useSpring, animated } from "@react-spring/web";
+import { useInView, animated } from "@react-spring/web";
 import Github from "~/icons/Github";
 
 type ProjectProps = {
   title: string;
-  subtitle: string;
   description: string;
   thumbnail: string;
   liveLink: string;
@@ -20,13 +18,15 @@ const Project = ({
   sourceCodeLink,
   technologies,
 }: ProjectProps) => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-
-  const animationProps = useSpring({
-    opacity: inView ? 1 : 0,
-    transform: inView ? "translateY(0px)" : "translateY(20px)",
-    config: { tension: 220, friction: 20 },
-  });
+  // Using a more subtle animation
+  const [ref, animationProps] = useInView(
+    () => ({
+      from: { opacity: 0, transform: "translateY(20px)" },
+      to: { opacity: 1, transform: "translateY(0px)" },
+      config: { tension: 200, friction: 25 }, // Subtle effect
+    }),
+    { amount: 0.2, once: true }
+  );
 
   return (
     <animated.div

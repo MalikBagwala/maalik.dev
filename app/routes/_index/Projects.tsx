@@ -100,7 +100,6 @@ const Projects = () => {
         <Project
           key={project.title}
           title={project.title}
-          subtitle={project.subtitle}
           description={project.description}
           thumbnail={project.thumbnail}
           liveLink={project.liveLink}
