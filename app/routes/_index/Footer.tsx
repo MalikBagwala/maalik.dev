@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { useTrail, useSpring, animated } from "@react-spring/web";
+import { animated, useSpring, useTrail } from "@react-spring/web";
+import { useState } from "react";
+import { useInView } from "react-intersection-observer";
 import Section from "~/components/Section/Section";
 import Github from "~/icons/Github";
 import GitLab from "~/icons/GitLab";
@@ -30,7 +31,8 @@ const SOCIALS = [
   },
 ];
 
-const AnimatedSocialIcon = ({ children, link }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const AnimatedSocialIcon = ({ children, link }: any) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const springProps = useSpring({
@@ -53,27 +55,24 @@ const AnimatedSocialIcon = ({ children, link }) => {
 };
 
 const Footer = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // Staggered animations for each section
   const trail = useTrail(3, {
-    opacity: isMounted ? 1 : 0,
-    y: isMounted ? 0 : 20,
+    opacity: inView ? 1 : 0,
+    y: inView ? 0 : 20,
     from: { opacity: 0, y: 20 },
     config: { mass: 1, tension: 200, friction: 20 },
   });
 
-  // Staggered animations for social icons
   const socialTrail = useTrail(SOCIALS.length, {
-    opacity: isMounted ? 1 : 0,
-    y: isMounted ? 0 : 20,
+    opacity: inView ? 1 : 0,
+    y: inView ? 0 : 20,
     from: { opacity: 0, y: 20 },
     config: { mass: 1, tension: 200, friction: 20 },
-    delay: 200, // Delay social icons animation
+    delay: 200,
   });
 
   return (
@@ -81,7 +80,11 @@ const Footer = () => {
       id="footer"
       mainProps={{ className: "flex justify-between items-start" }}
     >
-      <animated.div className="flex flex-col text-gray-500" style={trail[0]}>
+      <animated.div
+        className="flex flex-col text-gray-500"
+        style={trail[0]}
+        ref={ref}
+      >
         <a className="text-blue-500" href="https://maalik.dev" target="__blank">
           Maalik
         </a>
