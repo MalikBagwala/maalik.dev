@@ -1,5 +1,4 @@
-import { animated, useSpring } from "@react-spring/web";
-import { useInView } from "react-intersection-observer";
+import { animated, useInView } from "@react-spring/web";
 import { twMerge } from "tailwind-merge";
 import Star from "~/icons/Star";
 
@@ -8,36 +7,35 @@ type TestimonialType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   testimonial: any;
 };
-const Testimonial = ({ index, testimonial }: TestimonialType) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true, // animate only once when visible
-    threshold: 0.1,
-  });
 
+const Testimonial = ({ index, testimonial }: TestimonialType) => {
   // Determine column and animation direction
   const column = index % 3;
   const delay = Math.random() * 300;
 
   // Different animations based on column
-  const animationProps = useSpring({
-    opacity: inView ? 1 : 0,
-    transform:
-      column === 0
-        ? inView
-          ? "translateX(0px)"
-          : "translateX(-30px)" // Left to right for col 1
-        : column === 1
-        ? inView
-          ? "translateY(0px)"
-          : "translateY(30px)" // Bottom to top for col 2
-        : inView
-        ? "translateX(0px)"
-        : "translateX(30px)", // Right to left for col 3
-    config: { tension: 150, friction: 20 },
-    delay,
-  });
+  const [ref, animationProps] = useInView(
+    () => ({
+      from: {
+        opacity: 0,
+        transform:
+          column === 0
+            ? "translateX(-30px)" // Left to right for col 1
+            : column === 1
+            ? "translateY(30px)" // Bottom to top for col 2
+            : "translateX(30px)", // Right to left for col 3
+      },
+      to: {
+        opacity: 1,
+        transform: "translateX(0px)",
+      },
+      config: { tension: 150, friction: 20 },
+      delay,
+    }),
+    { amount: 0.1, once: true } // Trigger only once when 10% of element is in view
+  );
 
-  const isHighlight = testimonial.highlighted ? true : false;
+  const isHighlight = testimonial.highlighted;
 
   return (
     <animated.div
