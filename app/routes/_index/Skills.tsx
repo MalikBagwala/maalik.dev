@@ -72,6 +72,7 @@ const Skills = () => {
               className="p-4 rounded-lg flex flex-col items-center justify-center m-2 w-32 h-32 gap-4"
             >
               <img
+                loading="lazy"
                 className="h-10 w-auto"
                 src={skill.logo}
                 alt={skill.name}

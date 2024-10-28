@@ -59,7 +59,20 @@ const Navbar = () => {
       }
     });
 
-    return cleanup;
+    // Event listener for scrolling to the top to remove hash
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setActiveSection("");
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      cleanup();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []); // Empty dependency array means this runs once on mount
 
   return (

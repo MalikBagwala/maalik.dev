@@ -186,6 +186,7 @@ const Testimonials = () => {
                 </blockquote>
                 <footer className="flex items-center gap-4 justify-center mt-8">
                   <img
+                    loading="lazy"
                     className="rounded-full flex-shrink-0 flex-grow-0 object-cover w-12 h-12"
                     src={testimonial.avatar}
                     alt={testimonial.name}

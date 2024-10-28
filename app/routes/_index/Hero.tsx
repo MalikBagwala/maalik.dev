@@ -1,47 +1,92 @@
 import { Link } from "@remix-run/react";
 import Button from "~/components/Button";
+import { useSpring, useTrail, animated } from "@react-spring/web";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Staggered animations for text elements and button/link
+  const trail = useTrail(5, {
+    opacity: isMounted ? 1 : 0,
+    y: isMounted ? 0 : 20,
+    from: { opacity: 0, y: 20 },
+    config: { mass: 1, tension: 200, friction: 20 },
+  });
+
+  // Waving hand animation
+  const wavingHand = useSpring({
+    transform: isMounted ? "rotate(0deg)" : "rotate(45deg)",
+    from: { transform: "rotate(45deg)" },
+    config: { duration: 300 },
+    loop: { reverse: true },
+  });
+
+  // Fade-in animation for right image
+  const fadeInImage = useSpring({
+    opacity: isMounted ? 1 : 0,
+    from: { opacity: 0 },
+    config: { mass: 1, tension: 200, friction: 20 },
+  });
+
   return (
     <section className="border-b border-gray-200 content">
       <div className="container">
         <div className="flex justify-between min-h-[calc(70vh)] pt-20">
           <div className="flex flex-col gap-4">
-            <h3 className="flex text-2xl gap-2 text-gray-500">
-              <span> Hi there, I&apos;m Malik</span>
-              <img
+            <animated.h3
+              className="flex text-2xl gap-2 text-gray-500"
+              style={trail[0]}
+            >
+              <span>Hi there, I&apos;m Malik</span>
+              <animated.img
                 src="/icons/waving-hand.svg"
                 alt="waving-hand"
                 className="w-6"
+                style={wavingHand}
               />
-            </h3>
-            <h1 className="text-4xl font-bold text-gray-800">
+            </animated.h3>
+            <animated.h1
+              className="text-4xl font-bold text-gray-800"
+              style={trail[1]}
+            >
               Fullstack Engineer (ex-CTO)
-            </h1>
-            <h4 className="text-balance text-2xl text-gray-500">
+            </animated.h1>
+            <animated.h4
+              className="text-balance text-2xl text-gray-500"
+              style={trail[2]}
+            >
               I help people and brands reach their business goals by designing &
               building customer-centric software products and interactive
               experiences
-            </h4>
-            <div className="flex gap-8 items-center">
-              <Button>View my work</Button>
-              <Link
-                className="text-lg font-semibold text-teal-500"
-                to={"#skills"}
-              >
-                More about me
-              </Link>
+            </animated.h4>
+            <div className="flex items-center gap-4">
+              <animated.div style={trail[3]}>
+                <Button>View my work</Button>
+              </animated.div>
+              <animated.div style={trail[4]}>
+                <Link
+                  className="text-lg font-semibold text-teal-500"
+                  to={"#skills"}
+                >
+                  More about me
+                </Link>
+              </animated.div>
             </div>
           </div>
-          <div>
-            <img src="https://picsum.photos/300/500" alt="" />
-          </div>
+          <animated.div style={fadeInImage}>
+            <animated.img
+              className="h-[50vh] w-auto object-cover"
+              src="https://picsum.photos/id/237/1700/1700"
+              alt=""
+              loading={"lazy"}
+            />
+          </animated.div>
         </div>
-        {/* <div className="flex flex-col justify-center items-center py-20 gap-10 text-center px-10">
-        <div className="uppercase font-semibold text-sm text-gray-500 tracking-widest">
-          At agency side, client side or as freelancer
-        </div>
-      </div> */}
       </div>
     </section>
   );

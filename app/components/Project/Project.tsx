@@ -22,6 +22,7 @@ const Project = ({
     <div className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white">
       <div className="h-96 relative">
         <img
+          loading="lazy"
           src={thumbnail}
           alt={`${title} thumbnail`}
           className="w-full h-full object-cover rounded-t-lg"
