@@ -1,7 +1,5 @@
-import { twMerge } from "tailwind-merge";
 import Section from "~/components/Section/Section";
-import Star from "~/icons/Star";
-
+import Testimonial from "~/components/Testimonial/Testimonial";
 const TESTIMONIALS = [
   {
     id: 1,
@@ -161,72 +159,13 @@ const Testimonials = () => {
       subtitle="Hear from our clients about their experiences and success stories."
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-12">
-        {TESTIMONIALS.map((testimonial) => {
-          const isHighlight = testimonial.highlighted ? true : false;
+        {TESTIMONIALS.map((testimonial, index) => {
           return (
-            <div
+            <Testimonial
+              testimonial={testimonial}
+              index={index}
               key={testimonial.id}
-              id={`testimonials-${testimonial.id}`}
-              className="flex justify-center items-center "
-            >
-              <div
-                style={{
-                  boxShadow: "0 2px 4px 0 rgba(14, 30, 37, 0.12)",
-                }}
-                className={twMerge(
-                  "rounded-xl px-6 py-8 flex flex-col justify-between text-gray-500 h-fit bg-white relative",
-                  isHighlight &&
-                    "bg-gradient-to-r from-teal-600 to-blue-600 text-gray-50"
-                )}
-              >
-                <blockquote className="text-lg text-balance text-center leading-relaxed">
-                  {'"'}
-                  {testimonial.comment}
-                  {'"'}
-                </blockquote>
-                <footer className="flex items-center gap-4 justify-center mt-8">
-                  <img
-                    loading="lazy"
-                    className="rounded-full flex-shrink-0 flex-grow-0 object-cover w-12 h-12"
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    height={40}
-                    width={40}
-                  />
-                  <div>
-                    <h6
-                      className={twMerge(
-                        "text-gray-800 font-bold",
-                        isHighlight && "text-white"
-                      )}
-                    >
-                      {testimonial.name}
-                    </h6>
-                    <p>{testimonial.designation}</p>
-                  </div>
-                </footer>
-                {isHighlight && (
-                  <>
-                    <Star
-                      className="absolute top-6 -left-[12px] fill-amber-400"
-                      height={30}
-                    />
-                    <Star
-                      className="absolute -top-2 left-8 fill-gray-700"
-                      height={20}
-                    />
-                    <Star
-                      className="absolute top-6 -right-[12px] fill-amber-400"
-                      height={12}
-                    />
-                    <Star
-                      className="absolute -bottom-5 right-12 fill-gray-700"
-                      height={40}
-                    />
-                  </>
-                )}
-              </div>
-            </div>
+            />
           );
         })}
       </div>

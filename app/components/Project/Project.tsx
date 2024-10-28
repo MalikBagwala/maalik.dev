@@ -1,3 +1,5 @@
+import { useInView } from "react-intersection-observer";
+import { useSpring, animated } from "@react-spring/web";
 import Github from "~/icons/Github";
 
 type ProjectProps = {
@@ -18,8 +20,20 @@ const Project = ({
   sourceCodeLink,
   technologies,
 }: ProjectProps) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  const animationProps = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? "translateY(0px)" : "translateY(20px)",
+    config: { tension: 220, friction: 20 },
+  });
+
   return (
-    <div className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white">
+    <animated.div
+      ref={ref}
+      style={animationProps}
+      className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white"
+    >
       <div className="h-96 relative">
         <img
           loading="lazy"
@@ -61,7 +75,7 @@ const Project = ({
       <div className="p-4">
         <p className="text-gray-700 leading-relaxed text-lg">{description}</p>
       </div>
-    </div>
+    </animated.div>
   );
 };
 
