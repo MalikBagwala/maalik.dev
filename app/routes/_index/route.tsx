@@ -8,8 +8,12 @@ import Skills from "./Skills";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Malik Bagwala | Freelance Software Engineer" },
+    {
+      name: "description",
+      content:
+        "I help people and brands reach their business goals by designing & building customer-centric software products and interactive experiences",
+    },
   ];
 };
 

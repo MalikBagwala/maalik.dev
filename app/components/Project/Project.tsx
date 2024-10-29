@@ -1,8 +1,8 @@
+import { useInView, animated } from "@react-spring/web";
 import Github from "~/icons/Github";
 
 type ProjectProps = {
   title: string;
-  subtitle: string;
   description: string;
   thumbnail: string;
   liveLink: string;
@@ -18,10 +18,25 @@ const Project = ({
   sourceCodeLink,
   technologies,
 }: ProjectProps) => {
+  // Using a more subtle animation
+  const [ref, animationProps] = useInView(
+    () => ({
+      from: { opacity: 0, transform: "translateY(20px)" },
+      to: { opacity: 1, transform: "translateY(0px)" },
+      config: { tension: 200, friction: 25 }, // Subtle effect
+    }),
+    { amount: 0.2, once: true }
+  );
+
   return (
-    <div className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white">
+    <animated.div
+      ref={ref}
+      style={animationProps}
+      className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white"
+    >
       <div className="h-96 relative">
         <img
+          loading="lazy"
           src={thumbnail}
           alt={`${title} thumbnail`}
           className="w-full h-full object-cover rounded-t-lg"
@@ -32,7 +47,7 @@ const Project = ({
               href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="uppercase text-2xl font-bold tracking-wider text-white backdrop-blur-md backdrop-saturate-100 backdrop-brightness-[0.7] px-2 rounded-full transition duration-200 transform hover:scale-105"
+              className="uppercase text-2xl font-bold tracking-wider text-white backdrop-blur-md backdrop-saturate-100 backdrop-brightness-[0.7] hover:backdrop-brightness-[0.4] px-2 rounded-full transition duration-200 transform hover:scale-105"
             >
               {title}
             </a>
@@ -60,7 +75,7 @@ const Project = ({
       <div className="p-4">
         <p className="text-gray-700 leading-relaxed text-lg">{description}</p>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

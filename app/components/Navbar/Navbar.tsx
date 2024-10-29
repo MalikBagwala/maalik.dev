@@ -1,26 +1,80 @@
 import { Link, NavLink, useLocation } from "@remix-run/react";
 import { twMerge } from "tailwind-merge";
+import { useState, useEffect } from "react";
+
 const LINKS = [
   {
     to: "#projects",
     name: "Projects",
   },
   {
-    to: "#testimonials",
-    name: "Testimonials",
-  },
-  {
     to: "#skills",
     name: "Skills",
+  },
+  {
+    to: "#testimonials",
+    name: "Testimonials",
   },
   {
     to: "#contact",
     name: "Contact",
   },
 ];
+
 const Navbar = () => {
   const { hash } = useLocation();
-  console.log(hash);
+  const [activeSection, setActiveSection] = useState(hash);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    // Cleanup function to disconnect all observers
+    const cleanup = () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+
+    // Create observers for each section
+    LINKS.forEach((link) => {
+      const sectionId = link.to.substring(1); // Remove # from the id
+      const section = document.getElementById(sectionId);
+
+      if (section) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setActiveSection(`#${sectionId}`);
+                // Update URL hash without scrolling
+                window.history.replaceState(null, "", `#${sectionId}`);
+              }
+            });
+          },
+          {
+            rootMargin: "-50% 0px -50% 0px", // Consider element in view when it's in the middle of the viewport
+          }
+        );
+
+        observer.observe(section);
+        observers.push(observer);
+      }
+    });
+
+    // Event listener for scrolling to the top to remove hash
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setActiveSection("");
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      cleanup();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array means this runs once on mount
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-50">
       <div className="container py-6">
@@ -35,7 +89,7 @@ const Navbar = () => {
           </div>
           <div className="flex gap-6">
             {LINKS.map((link) => {
-              const isActive = link.to === hash;
+              const isActive = link.to === activeSection;
               return (
                 <NavLink
                   key={link.to}
