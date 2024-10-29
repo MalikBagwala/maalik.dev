@@ -32,7 +32,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="min-h-screen bg-white text-gray-700">
+      <body className="min-h-screen bg-white text-gray-700 overflow-x-hidden">
         <Navbar />
         <main>{children}</main>
         <ScrollRestoration />
