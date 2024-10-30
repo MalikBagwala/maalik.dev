@@ -89,7 +89,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="visible md:hidden">
-            <MobileMenu />
+            <MobileMenu activeSection={activeSection} />
           </div>
           <div className="hidden md:flex gap-6">
             {LINKS.map((link) => {
