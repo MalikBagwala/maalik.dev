@@ -36,8 +36,15 @@ const MobileMenu = () => {
         )}
       </AnimatePresence>
       {isOpen && (
-        <div className="flex flex-grow  fixed bg-white w-full top-[62px] left-0 h-full p-4">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa, quos!
+        <div className="flex flex-col justify-between fixed bg-white w-full top-[62px] left-0 h-[calc(100vh-62px)] p-4">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa,
+            quos!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa,
+            quos!
+          </p>
         </div>
       )}
     </div>
