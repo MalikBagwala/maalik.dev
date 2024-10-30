@@ -7,7 +7,7 @@
   @apply custom-focus;
 }
 .content {
-  @apply pt-[calc(79px+2rem)] pb-8;
+  @apply pt-[calc(62px+2rem)] pb-8;
 }
 
 @keyframes pulse {
