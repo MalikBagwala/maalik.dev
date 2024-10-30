@@ -6,7 +6,16 @@ import Hamburger from "~/icons/Hamburger";
 const MobileMenu = () => {
   const [isOpen, setOpen] = useState(false);
 
-  const toggleOpen = () => setOpen((prev) => !prev);
+  const toggleOpen = () => {
+    setOpen((prev) => {
+      if (!prev) {
+        document.body.style.overflowY = "hidden";
+      } else {
+        document.body.style.overflowY = "auto";
+      }
+      return !prev;
+    });
+  };
   return (
     <div>
       <AnimatePresence>
@@ -26,6 +35,11 @@ const MobileMenu = () => {
           />
         )}
       </AnimatePresence>
+      {isOpen && (
+        <div className="flex flex-grow  fixed bg-white w-full top-[62px] left-0 h-full p-4">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa, quos!
+        </div>
+      )}
     </div>
   );
 };

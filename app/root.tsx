@@ -34,6 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="min-h-screen bg-white text-gray-700 overflow-x-hidden">
         <Navbar />
+
         <main>{children}</main>
         <ScrollRestoration />
         <Scripts />
