@@ -157,7 +157,7 @@ const Testimonials = () => {
       id="testimonials"
       title="Testimonials"
       subtitle="Hear from our clients about their experiences and success stories."
-      containerClassName="p-0 overflow-x-hidden"
+      containerClassName="p-0 overflow-hidden"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-10 gap-x-12 px-6 py-4 lg:px-4">
         {TESTIMONIALS.map((testimonial, index) => {
