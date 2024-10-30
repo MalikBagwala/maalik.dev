@@ -1,10 +1,13 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import CloseIcon from "~/icons/CloseIcon";
 import Hamburger from "~/icons/Hamburger";
+import { LINKS } from "../Navbar/Navbar";
+import { twMerge } from "tailwind-merge";
 
-const MobileMenu = () => {
+const MobileMenu = ({ activeSection }: { activeSection: string }) => {
   const [isOpen, setOpen] = useState(false);
+  const [showLinks, setShowLinks] = useState(false); // State to control link animation
 
   const toggleOpen = () => {
     setOpen((prev) => {
@@ -15,6 +18,8 @@ const MobileMenu = () => {
       }
       return !prev;
     });
+    // Reset showLinks when closing the menu
+    setShowLinks(false);
   };
 
   return (
@@ -36,19 +41,48 @@ const MobileMenu = () => {
           />
         )}
       </AnimatePresence>
-      {isOpen && (
-        <div className="flex flex-col justify-between fixed bg-white w-full top-[62px] h-[calc(100dvh-62px)] left-0 p-4">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa,
-            quos!
-          </p>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa,
-            quos!
-          </p>
-          {/* Add more content here if needed */}
-        </div>
-      )}
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="flex justify-center items-center fixed bg-white w-full top-[63px] h-[calc(100dvh-63px)] left-0 p-4 text-gray-600 z-10"
+            initial={{ opacity: 0, x: "100vw" }} // Start with opacity 0 and slide in from the right
+            animate={{ opacity: 1, x: 0 }} // Fade in and slide down
+            exit={{ opacity: 0, x: "100vw" }} // Fade out and slide back to the right
+            transition={{ duration: 0.6 }} // Transition duration
+            onAnimationComplete={() => {
+              // Set showLinks to true after the menu animation completes
+              setShowLinks(true);
+            }}
+          >
+            <motion.ul initial="hidden" animate={showLinks ? "show" : "hidden"}>
+              {LINKS.map((link, index) => {
+                const isActive = activeSection === link.to;
+                return (
+                  <motion.li
+                    key={link.name}
+                    className={twMerge(
+                      "text-center text-4xl font-bold mt-8",
+                      isActive && "text-blue-500"
+                    )}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 }, // Start off-screen with opacity 0
+                      show: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { delay: index * 0.1 }, // Stagger effect
+                      },
+                    }}
+                  >
+                    {link.name}
+                  </motion.li>
+                );
+              })}
+            </motion.ul>
+            {/* Add more content here if needed */}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
