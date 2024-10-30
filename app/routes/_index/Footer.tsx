@@ -78,7 +78,10 @@ const Footer = () => {
   return (
     <Section
       id="footer"
-      mainProps={{ className: "flex justify-between items-start" }}
+      mainProps={{
+        className:
+          "flex flex-col gap-8 lg:gap-0 text-center lg:flex-row justify-center lg:justify-between items-center lg:items-start",
+      }}
     >
       <animated.div
         className="flex flex-col text-gray-500"
