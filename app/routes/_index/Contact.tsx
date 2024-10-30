@@ -55,20 +55,23 @@ const Contact = () => {
   return (
     <Section
       id="contact"
-      mainProps={{ className: "flex justify-between items-center" }}
+      mainProps={{
+        className:
+          "flex flex-col gap-8 lg:gap-0 lg:flex-row justify-center lg:justify-between items-start lg:items-center",
+      }}
     >
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4 lg:gap-6">
         <animated.h5
           ref={headingRef}
           style={headingProps}
-          className="text-4xl text-gray-800 font-bold"
+          className="text-3xl lg:text-4xl text-gray-800 font-bold"
         >
           In need of a designer/developer?
         </animated.h5>
         <animated.p
           ref={paragraphRef}
           style={paragraphProps}
-          className="text-2xl text-blue-500"
+          className="text-xl lg:text-2xl text-blue-500"
         >
           <span className="pulse" /> I’m currently available for work.
         </animated.p>

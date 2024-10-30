@@ -37,7 +37,7 @@ const Hero = () => {
   return (
     <section className="border-b border-gray-200 content">
       <div className="container">
-        <div className="flex justify-between min-h-[calc(70vh)] pt-20">
+        <div className="flex flex-col gap-4 lg:flex-row justify-between min-h-[calc(70vh)] lg:pt-20">
           <div className="flex flex-col gap-4">
             <animated.h3
               className="flex text-2xl gap-2 text-gray-500"
@@ -82,7 +82,7 @@ const Hero = () => {
           <div>
             <animated.img
               style={fadeInImage}
-              className="h-[50vh] w-auto object-cover"
+              className="h-[50vh] w-auto object-cover rounded-md"
               src="https://picsum.photos/id/237/500/500"
               alt="Avatar"
               loading={"eager"}

@@ -77,7 +77,7 @@ const Navbar = () => {
   }, []); // Empty dependency array means this runs once on mount
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-100">
+    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-[1000]">
       <div className="container py-4">
         <div className="flex text-lg">
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">

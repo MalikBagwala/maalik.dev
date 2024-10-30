@@ -94,7 +94,7 @@ const Projects = () => {
       id="projects"
       title="Projects"
       subtitle="Prototypes, Digital Products (Apps, Websites, SaaS solutions) and design systems which are visually pleasing, user-centric and easy to use."
-      mainProps={{ className: "columns-2 gap-10" }}
+      mainProps={{ className: "columns-1 lg:columns-2 gap-10" }}
     >
       {PROJECTS.map((project) => (
         <Project

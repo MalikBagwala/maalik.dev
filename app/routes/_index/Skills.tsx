@@ -109,7 +109,7 @@ const Skills = () => {
       title="Skills"
       subtitle="For those who know what they’re looking for.."
     >
-      <ul className="flex flex-wrap">
+      <ul className="flex flex-wrap justify-center">
         {SKILLS.map((skill, index) => {
           return <Skill key={skill.name} skill={skill} index={index} />;
         })}
