@@ -1,7 +1,6 @@
 import { Link, NavLink, useLocation } from "@remix-run/react";
+import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { useState, useEffect } from "react";
-import { useMobile } from "~/hooks/useMobile";
 import MobileMenu from "../MobileMenu/MobileMenu";
 
 export const LINKS = [
@@ -77,8 +76,6 @@ const Navbar = () => {
     };
   }, []); // Empty dependency array means this runs once on mount
 
-  const isMobile = useMobile();
-  console.log(isMobile);
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-50">
       <div className="container py-4 lg:py-6">
@@ -91,27 +88,26 @@ const Navbar = () => {
               </h1>
             </Link>
           </div>
-          {isMobile ? (
+          <div className="visible md:hidden">
             <MobileMenu />
-          ) : (
-            <div className="flex gap-6">
-              {LINKS.map((link) => {
-                const isActive = link.to === activeSection;
-                return (
-                  <NavLink
-                    key={link.to}
-                    to={link.to}
-                    className={twMerge(
-                      "hover:text-blue-600 transition-colors ease-out",
-                      isActive && "text-blue-600"
-                    )}
-                  >
-                    {link.name}
-                  </NavLink>
-                );
-              })}
-            </div>
-          )}
+          </div>
+          <div className="hidden md:flex gap-6">
+            {LINKS.map((link) => {
+              const isActive = link.to === activeSection;
+              return (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={twMerge(
+                    "hover:text-blue-600 transition-colors ease-out",
+                    isActive && "text-blue-600"
+                  )}
+                >
+                  {link.name}
+                </NavLink>
+              );
+            })}
+          </div>
         </div>
       </div>
     </nav>
