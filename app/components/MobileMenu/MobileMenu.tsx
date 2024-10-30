@@ -2,6 +2,7 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import CloseIcon from "~/icons/CloseIcon";
 import Hamburger from "~/icons/Hamburger";
+import { LINKS } from "../Navbar/Navbar";
 
 const MobileMenu = () => {
   const [isOpen, setOpen] = useState(false);
@@ -37,15 +38,19 @@ const MobileMenu = () => {
         )}
       </AnimatePresence>
       {isOpen && (
-        <div className="flex flex-col justify-between fixed bg-white w-full top-[62px] h-[calc(100dvh-62px)] left-0 p-4">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa,
-            quos!
-          </p>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa,
-            quos!
-          </p>
+        <div className="flex justify-center items-center fixed bg-white w-full top-[63px] h-[calc(100dvh-63px)] left-0 p-4 text-gray-600">
+          <ul>
+            {LINKS.map((link) => {
+              return (
+                <li
+                  key={link.name}
+                  className="text-center text-4xl font-bold mt-8"
+                >
+                  {link.name}
+                </li>
+              );
+            })}
+          </ul>
           {/* Add more content here if needed */}
         </div>
       )}
