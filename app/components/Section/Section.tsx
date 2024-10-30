@@ -1,10 +1,11 @@
 import { ComponentProps } from "react";
-import { twMerge } from "tailwind-merge";
+import { ClassNameValue, twMerge } from "tailwind-merge";
 
 type SectionProps = ComponentProps<"section"> & {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
   mainProps?: ComponentProps<"main">;
+  containerClassName?: ClassNameValue;
 };
 const Section = ({
   id,
@@ -13,6 +14,7 @@ const Section = ({
   title,
   subtitle,
   mainProps,
+  containerClassName,
   ...props
 }: SectionProps) => {
   return (
@@ -24,7 +26,7 @@ const Section = ({
         className
       )}
     >
-      <div className="container">
+      <div className={twMerge("container", containerClassName)}>
         {title && (
           <header className="w-full text-center flex flex-col gap-y-2 mb-10">
             <h2 className="text-4xl font-bold text-gray-800">{title}</h2>
