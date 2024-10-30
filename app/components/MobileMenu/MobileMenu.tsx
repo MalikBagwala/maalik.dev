@@ -16,6 +16,7 @@ const MobileMenu = () => {
       return !prev;
     });
   };
+
   return (
     <div>
       <AnimatePresence>
@@ -36,7 +37,7 @@ const MobileMenu = () => {
         )}
       </AnimatePresence>
       {isOpen && (
-        <div className="flex flex-col justify-between fixed bg-white w-full top-[62px] left-0 h-[calc(100vh-62px)] p-4">
+        <div className="flex flex-col justify-between fixed bg-white w-full top-[62px] h-[calc(100dvh-62px)] left-0 p-4">
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa,
             quos!
@@ -45,6 +46,7 @@ const MobileMenu = () => {
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa,
             quos!
           </p>
+          {/* Add more content here if needed */}
         </div>
       )}
     </div>
