@@ -6,6 +6,7 @@
 *{
   @apply custom-focus;
 }
+
 .content {
   @apply pt-[calc(62px+2rem)] pb-8;
 }
