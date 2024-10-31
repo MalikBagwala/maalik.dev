@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 .custom-focus {
-  @apply focus:outline-dashed focus:outline-blue-500 focus:outline-2 focus:outline-offset-2;
+  @apply focus-visible:outline-dashed focus-visible:outline-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2;
 }
 *{
   @apply custom-focus;
