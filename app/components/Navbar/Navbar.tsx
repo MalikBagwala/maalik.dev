@@ -17,6 +17,20 @@ const Navbar = () => {
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
+
+    // Debounced scroll handler
+    let scrollTimeout: NodeJS.Timeout | null = null;
+    const debouncedHandleScroll = () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        if (window.scrollY === 0) {
+          setActiveSection("");
+          window.history.replaceState(null, "", window.location.pathname);
+        }
+      }, 100); // Adjust timeout duration as needed for smoothness
+    };
+
     const cleanup = () => {
       observers.forEach((observer) => observer.disconnect());
     };
@@ -43,18 +57,12 @@ const Navbar = () => {
       }
     });
 
-    const handleScroll = () => {
-      if (window.scrollY === 0) {
-        setActiveSection("");
-        window.history.replaceState(null, "", window.location.pathname);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", debouncedHandleScroll);
 
     return () => {
       cleanup();
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", debouncedHandleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, []);
 
