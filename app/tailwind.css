@@ -3,7 +3,7 @@
 .custom-focus {
   @apply focus-visible:outline-dashed focus-visible:outline-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2;
 }
-*{
+* {
   @apply custom-focus;
 }
 
@@ -13,7 +13,7 @@
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 98, 255, .4);
+    box-shadow: 0 0 0 0 rgba(0, 98, 255, 0.4);
   }
   70% {
     box-shadow: 0 0 0 10px rgba(0, 98, 255, 0);
@@ -41,7 +41,7 @@
   --tw-border-opacity: 1;
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
   --tw-shadow: 0 0 #0000;
-  --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+  --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgba(59, 130, 246, 0.5);
@@ -55,16 +55,16 @@
   margin-right: 6px;
   border-radius: 50%;
   background-clip: padding-box;
-  box-shadow: 0 0 0 rgba(0,98,255,.4);
+  box-shadow: 0 0 0 rgba(0, 98, 255, 0.4);
   animation: pulse 2s infinite;
   width: 10px;
   height: 10px;
 }
 
-.social{
+.social {
   @apply fill-[rgba(0,8,61,0.7)] hover:fill-blue-500;
 }
-html{
-  @apply scroll-smooth
+html {
+  @apply scroll-smooth;
 }
 @tailwind utilities;
