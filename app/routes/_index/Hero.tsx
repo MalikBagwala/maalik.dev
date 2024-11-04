@@ -11,7 +11,7 @@ const Hero = () => {
   }, []);
 
   // Container variants for staggered children animations
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -22,7 +22,7 @@ const Hero = () => {
   };
 
   // Child variants for text elements
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
@@ -48,7 +48,7 @@ const Hero = () => {
   };
 
   // Image animation
-  const imageVariants = {
+  const imageVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
