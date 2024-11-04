@@ -121,7 +121,7 @@ const Hero = () => {
             initial="hidden"
             animate={isMounted ? "show" : "hidden"}
             variants={imageVariants}
-            className="h-[30vh] w-auto rounded-md"
+            className="self-center mb-auto mt-12 lg:mt-0 h-[20vh] lg:h-[30vh] w-fit rounded-md"
             src="/avatar.png"
             alt="Avatar"
           />
