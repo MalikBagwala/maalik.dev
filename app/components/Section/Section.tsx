@@ -7,6 +7,7 @@ type SectionProps = ComponentProps<"section"> & {
   mainProps?: ComponentProps<"main">;
   containerClassName?: ClassNameValue;
 };
+
 const Section = ({
   id,
   children,

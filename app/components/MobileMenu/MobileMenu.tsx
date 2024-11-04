@@ -5,7 +5,7 @@ import Hamburger from "~/icons/Hamburger";
 import { LINKS } from "../Navbar/Navbar";
 import { twMerge } from "tailwind-merge";
 
-const MobileMenu = ({ activeSection }: { activeSection: string }) => {
+const MobileMenu = ({ activeSection }: { activeSection: string | null }) => {
   const [isOpen, setOpen] = useState(false);
   const [showLinks, setShowLinks] = useState(false); // State to control link animation
 

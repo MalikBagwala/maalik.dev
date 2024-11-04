@@ -1,7 +1,6 @@
 import { Link, NavLink, useLocation } from "@remix-run/react";
-import { useEffect, useState } from "react";
-import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
+import { twMerge } from "tailwind-merge";
 import MobileMenu from "../MobileMenu/MobileMenu";
 
 export const LINKS = [
@@ -13,58 +12,6 @@ export const LINKS = [
 
 const Navbar = () => {
   const { hash } = useLocation();
-  const [activeSection, setActiveSection] = useState(hash);
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    // Debounced scroll handler
-    let scrollTimeout: NodeJS.Timeout | null = null;
-    const debouncedHandleScroll = () => {
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(() => {
-        if (window.scrollY === 0) {
-          setActiveSection("");
-          window.history.replaceState(null, "", window.location.pathname);
-        }
-      }, 100); // Adjust timeout duration as needed for smoothness
-    };
-
-    const cleanup = () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-
-    LINKS.forEach((link) => {
-      const sectionId = link.to.substring(1);
-      const section = document.getElementById(sectionId);
-
-      if (section) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                setActiveSection(`#${sectionId}`);
-                window.history.replaceState(null, "", `#${sectionId}`);
-              }
-            });
-          },
-          { rootMargin: "-50% 0px -50% 0px" }
-        );
-
-        observer.observe(section);
-        observers.push(observer);
-      }
-    });
-
-    window.addEventListener("scroll", debouncedHandleScroll);
-
-    return () => {
-      cleanup();
-      window.removeEventListener("scroll", debouncedHandleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-    };
-  }, []);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-[1000]">
@@ -79,11 +26,11 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="visible md:hidden">
-            <MobileMenu activeSection={activeSection} />
+            <MobileMenu activeSection={hash} />
           </div>
           <div className="hidden md:flex gap-6">
             {LINKS.map((link) => {
-              const isActive = link.to === activeSection;
+              const isActive = link.to === hash;
               return (
                 <NavLink
                   key={link.to}
