@@ -60,9 +60,9 @@ export async function loader() {
     }),
     total: response.total,
   };
-  console.log(response.items[0].fields?.thumbnail);
   return {
     projects,
+    
   };
 }
 export default function Index() {
