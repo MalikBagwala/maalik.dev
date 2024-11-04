@@ -1,25 +1,14 @@
 import { Link, NavLink, useLocation } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { motion } from "framer-motion";
 import MobileMenu from "../MobileMenu/MobileMenu";
 
 export const LINKS = [
-  {
-    to: "#projects",
-    name: "Projects",
-  },
-  {
-    to: "#skills",
-    name: "Skills",
-  },
-  {
-    to: "#testimonials",
-    name: "Testimonials",
-  },
-  {
-    to: "#contact",
-    name: "Contact",
-  },
+  { to: "#projects", name: "Projects" },
+  { to: "#skills", name: "Skills" },
+  { to: "#testimonials", name: "Testimonials" },
+  { to: "#contact", name: "Contact" },
 ];
 
 const Navbar = () => {
@@ -29,14 +18,25 @@ const Navbar = () => {
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    // Cleanup function to disconnect all observers
+    // Debounced scroll handler
+    let scrollTimeout: NodeJS.Timeout | null = null;
+    const debouncedHandleScroll = () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        if (window.scrollY === 0) {
+          setActiveSection("");
+          window.history.replaceState(null, "", window.location.pathname);
+        }
+      }, 100); // Adjust timeout duration as needed for smoothness
+    };
+
     const cleanup = () => {
       observers.forEach((observer) => observer.disconnect());
     };
 
-    // Create observers for each section
     LINKS.forEach((link) => {
-      const sectionId = link.to.substring(1); // Remove # from the id
+      const sectionId = link.to.substring(1);
       const section = document.getElementById(sectionId);
 
       if (section) {
@@ -45,14 +45,11 @@ const Navbar = () => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 setActiveSection(`#${sectionId}`);
-                // Update URL hash without scrolling
                 window.history.replaceState(null, "", `#${sectionId}`);
               }
             });
           },
-          {
-            rootMargin: "-50% 0px -50% 0px", // Consider element in view when it's in the middle of the viewport
-          }
+          { rootMargin: "-50% 0px -50% 0px" }
         );
 
         observer.observe(section);
@@ -60,21 +57,14 @@ const Navbar = () => {
       }
     });
 
-    // Event listener for scrolling to the top to remove hash
-    const handleScroll = () => {
-      if (window.scrollY === 0) {
-        setActiveSection("");
-        window.history.replaceState(null, "", window.location.pathname);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", debouncedHandleScroll);
 
     return () => {
       cleanup();
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", debouncedHandleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
-  }, []); // Empty dependency array means this runs once on mount
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-[1000]">
@@ -98,12 +88,28 @@ const Navbar = () => {
                 <NavLink
                   key={link.to}
                   to={link.to}
-                  className={twMerge(
-                    "hover:text-blue-600 transition-colors ease-out",
-                    isActive && "text-blue-600"
-                  )}
+                  className="relative transition-colors ease-out"
                 >
-                  {link.name}
+                  <motion.span
+                    whileHover={{ y: 2 }}
+                    className={twMerge(
+                      "transition-colors ease-out",
+                      isActive ? "text-blue-600" : "text-gray-700"
+                    )}
+                  >
+                    {link.name}
+                  </motion.span>
+                  <motion.div
+                    className="absolute left-0 bottom-0 h-[2px] w-full bg-blue-600 origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: isActive ? 1 : 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{
+                      type: "tween",
+                      ease: "easeOut",
+                      duration: 0.5,
+                    }}
+                  />
                 </NavLink>
               );
             })}
