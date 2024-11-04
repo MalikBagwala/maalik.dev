@@ -117,18 +117,14 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            variants={imageVariants}
+          <motion.img
             initial="hidden"
             animate={isMounted ? "show" : "hidden"}
-          >
-            <img
-              className="h-[50vh] w-auto object-cover rounded-md"
-              src="https://picsum.photos/id/237/500/500"
-              alt="Avatar"
-              loading="eager"
-            />
-          </motion.div>
+            variants={imageVariants}
+            className="self-center mb-auto mt-12 lg:mt-0 h-[20vh] lg:h-[30vh] w-fit rounded-md"
+            src="/avatar.png"
+            alt="Avatar"
+          />
         </div>
       </div>
     </section>
