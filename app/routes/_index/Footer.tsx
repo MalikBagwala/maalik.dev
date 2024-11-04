@@ -8,7 +8,7 @@ import Linkedin from "~/icons/Linkedin";
 import Twitter from "~/icons/Twitter";
 import Upwork from "~/icons/Upwork";
 
-const SOCIALS = [
+export const SOCIALS = [
   {
     icon: <Linkedin height={22} className="social" />,
     link: "https://www.linkedin.com/in/malikbagwala",
