@@ -4,6 +4,7 @@ import CloseIcon from "~/icons/CloseIcon";
 import Hamburger from "~/icons/Hamburger";
 import { LINKS } from "../Navbar/Navbar";
 import { twMerge } from "tailwind-merge";
+import { Link } from "@remix-run/react";
 
 const MobileMenu = ({ activeSection }: { activeSection: string | null }) => {
   const [isOpen, setOpen] = useState(false);
@@ -59,23 +60,28 @@ const MobileMenu = ({ activeSection }: { activeSection: string | null }) => {
               {LINKS.map((link, index) => {
                 const isActive = activeSection === link.to;
                 return (
-                  <motion.li
+                  <Link
+                    to={{ hash: link.to }}
                     key={link.name}
-                    className={twMerge(
-                      "text-center text-4xl font-bold mt-8",
-                      isActive && "text-blue-500"
-                    )}
-                    variants={{
-                      hidden: { opacity: 0, y: 20 }, // Start off-screen with opacity 0
-                      show: {
-                        opacity: 1,
-                        y: 0,
-                        transition: { delay: index * 0.1 }, // Stagger effect
-                      },
-                    }}
+                    onClick={toggleOpen}
                   >
-                    {link.name}
-                  </motion.li>
+                    <motion.li
+                      className={twMerge(
+                        "text-center text-4xl font-bold mt-8",
+                        isActive && "text-blue-500"
+                      )}
+                      variants={{
+                        hidden: { opacity: 0, y: 20 }, // Start off-screen with opacity 0
+                        show: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { delay: index * 0.1 }, // Stagger effect
+                        },
+                      }}
+                    >
+                      {link.name}
+                    </motion.li>
+                  </Link>
                 );
               })}
             </motion.ul>
