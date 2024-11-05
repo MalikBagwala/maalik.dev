@@ -3,9 +3,9 @@ import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { EntryFieldTypes } from "contentful";
 import { contentfulClient } from "~/services/contentful";
-import Contact from "./Contact";
+import Contact from "./Contact/Contact";
 import Footer from "./Footer";
-import Hero from "./Hero";
+import Hero from "./Hero/Hero";
 import Projects, { ProjectsType } from "./Projects";
 import Skills from "./Skills";
 import Testimonials, { TestimonialsType } from "./Testimonials";
@@ -61,7 +61,6 @@ export async function loader() {
     content_type: "testimonials",
     order: ["-fields.weight", "fields.isHighlighted"],
   });
-  console.log(tResponse);
   const projects: ProjectsType & { total: number } = {
     projects: response.items.map(({ fields }) => {
       return {
