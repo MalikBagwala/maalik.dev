@@ -1,7 +1,13 @@
-import { motion, Variants } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import Button from "~/components/Button";
-import { SOCIALS } from "./Footer";
+import { SOCIALS } from "../Footer";
+import {
+  containerVariants,
+  handVariants,
+  imageVariants,
+  itemVariants,
+} from "./Hero.animations";
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -9,58 +15,6 @@ const Hero = () => {
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  // Container variants for staggered children animations
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  // Child variants for text elements
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        mass: 1,
-        stiffness: 200,
-        damping: 20,
-      },
-    },
-  };
-
-  // Waving hand animation
-  const handVariants: Variants = {
-    wave: {
-      rotate: [0, 45, 0],
-      transition: {
-        duration: 1.2,
-        repeat: 0,
-      },
-    },
-  };
-
-  // Image animation
-  const imageVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        mass: 1,
-        stiffness: 200,
-        damping: 20,
-      },
-    },
-  };
 
   return (
     <section className="border-b border-gray-200 content">

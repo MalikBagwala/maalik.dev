@@ -5,7 +5,7 @@ import { EntryFieldTypes } from "contentful";
 import { contentfulClient } from "~/services/contentful";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import Hero from "./Hero";
+import Hero from "./Hero/Hero";
 import Projects, { ProjectsType } from "./Projects";
 import Skills from "./Skills";
 import Testimonials, { TestimonialsType } from "./Testimonials";
