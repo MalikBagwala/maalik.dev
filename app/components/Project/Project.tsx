@@ -19,7 +19,7 @@ const Project = ({
   technologies,
 }: ProjectProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <motion.div

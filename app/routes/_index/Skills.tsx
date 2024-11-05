@@ -1,7 +1,7 @@
-import Section from "~/components/Section/Section";
-// import { useInView } from "react-intersection-observer";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Section from "~/components/Section/Section";
 const SKILLS = [
   {
     name: "React",
@@ -57,7 +57,6 @@ const SKILLS = [
   },
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Skill = ({ skill, index }: { skill: any; index: number }) => {
   const ref = useRef<HTMLLIElement | null>(null);
   const inView = useInView(ref, {
@@ -65,12 +64,11 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
     amount: 0.1,
   });
 
-  // Set random initial animation directions
   const directions = [
-    "translateX(-20px)",
-    "translateX(20px)",
-    "translateY(-20px)",
-    "translateY(20px)",
+    { translateX: -20, translateY: 0 },
+    { translateX: 20, translateY: 0 },
+    { translateX: 0, translateY: -20 },
+    { translateX: 0, translateY: 20 },
   ];
   const initialTransform = directions[index % directions.length];
   const delay = (Math.random() * 350) / 1000;
@@ -78,10 +76,11 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
   return (
     <motion.li
       ref={ref}
-      initial={{ opacity: 0, transform: initialTransform }}
-      animate={
-        inView ? { opacity: 1, transform: "translate(0px, 0px)" } : undefined
-      }
+      initial="hide"
+      variants={{
+        hide: { opacity: 0, ...initialTransform },
+        show: { opacity: 1, translateX: 0, translateY: 0 },
+      }}
       transition={{
         duration: 1,
         type: "spring",
@@ -91,13 +90,14 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
         boxShadow:
           "0 2px 6px 0 rgba(0, 0, 0, .05), 0 0 3px 0 rgba(0, 0, 0, .1)",
       }}
+      animate={inView ? "show" : undefined}
       className="p-4 rounded-lg flex flex-col items-center justify-center m-2 w-32 h-32 gap-4"
     >
       <img
         loading="lazy"
         className="h-10 w-auto"
         src={skill.logo}
-        alt={""}
+        alt={skill.name}
         width={"auto"}
       />
       <p className="font-bold text-gray-800">{skill.name}</p>
@@ -112,10 +112,10 @@ const Skills = () => {
       title="Skills"
       subtitle="For those who know what they’re looking for.."
     >
-      <ul className="flex flex-wrap justify-center">
-        {SKILLS.map((skill, index) => {
-          return <Skill key={skill.name} skill={skill} index={index} />;
-        })}
+      <ul className="flex flex-wrap justify-center overflow-hidden">
+        {SKILLS.map((skill, index) => (
+          <Skill key={skill.name} skill={skill} index={index} />
+        ))}
       </ul>
     </Section>
   );
