@@ -14,6 +14,7 @@ export type TestimonialsType = {
   testimonials: TestimonialType[];
 };
 const Testimonials = ({ testimonials }: TestimonialsType) => {
+  if (!testimonials.length) return null;
   return (
     <Section
       className="bg-gray-50"
@@ -23,17 +24,15 @@ const Testimonials = ({ testimonials }: TestimonialsType) => {
       containerClassName="p-0 overflow-hidden"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-10 gap-x-12 px-6 py-4 lg:px-4">
-        {testimonials?.length
-          ? testimonials.map((testimonial, index) => {
-              return (
-                <Testimonial
-                  testimonial={testimonial}
-                  index={index}
-                  key={testimonial.id}
-                />
-              );
-            })
-          : null}
+        {testimonials.map((testimonial, index) => {
+          return (
+            <Testimonial
+              testimonial={testimonial}
+              index={index}
+              key={testimonial.id}
+            />
+          );
+        })}
       </div>
     </Section>
   );

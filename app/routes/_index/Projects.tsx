@@ -14,6 +14,7 @@ export type ProjectsType = {
   projects: ProjectType[];
 };
 const Projects = ({ projects }: ProjectsType) => {
+  if (!projects.length) return null;
   return (
     <Section
       className="bg-gray-50"
@@ -22,19 +23,17 @@ const Projects = ({ projects }: ProjectsType) => {
       subtitle="Prototypes, Digital Products (Apps, Websites, SaaS solutions) and design systems which are visually pleasing, user-centric and easy to use."
       mainProps={{ className: "columns-1 lg:columns-2 gap-10" }}
     >
-      {projects.length
-        ? projects.map((project) => (
-            <Project
-              key={project.title}
-              title={project.title}
-              description={project.description}
-              thumbnail={project.thumbnail}
-              liveLink={project.liveLink}
-              sourceCodeLink={project.sourceCodeLink}
-              technologies={project.technologies}
-            />
-          ))
-        : null}
+      {projects.map((project) => (
+        <Project
+          key={project.title}
+          title={project.title}
+          description={project.description}
+          thumbnail={project.thumbnail}
+          liveLink={project.liveLink}
+          sourceCodeLink={project.sourceCodeLink}
+          technologies={project.technologies}
+        />
+      ))}
     </Section>
   );
 };
