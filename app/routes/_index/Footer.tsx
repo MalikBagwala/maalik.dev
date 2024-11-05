@@ -1,10 +1,12 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import Section from "~/components/Section/Section";
 import Github from "~/icons/Github";
 import GitLab from "~/icons/GitLab";
 import Linkedin from "~/icons/Linkedin";
 import Twitter from "~/icons/Twitter";
 import Upwork from "~/icons/Upwork";
+import { containerVariants, itemVariants } from "./Hero/Hero.animations";
 export const SOCIALS = [
   {
     icon: <Linkedin height={22} className="social" />,
@@ -29,13 +31,18 @@ export const SOCIALS = [
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const AnimatedSocialIcon = ({ children, link }: any) => {
+const AnimatedSocialIcon = ({ children, link, isFirst, isLast }: any) => {
   return (
     <motion.a
       href={link}
       target="__blank"
-      initial={{ rotate: "0deg" }}
-      whileHover={{ rotate: "360deg", scale: 1.5 }}
+      whileHover={{
+        rotate: "360deg",
+        scale: 2,
+        marginLeft: isFirst ? 0 : "12px",
+        marginRight: isLast ? 0 : "12px",
+      }}
+      variants={itemVariants}
       className="transition-colors hover:fill-blue-500"
     >
       {children}
@@ -44,44 +51,61 @@ const AnimatedSocialIcon = ({ children, link }: any) => {
 };
 
 const Footer = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(ref, { once: true, amount: 0.1 });
+
   return (
     <Section id="footer">
-      <motion.div className="flex flex-col gap-8 lg:gap-0 text-center lg:flex-row justify-center lg:justify-between items-center lg:items-start">
-        <motion.div className="flex flex-col text-gray-500">
-          <a
+      <motion.div
+        ref={ref}
+        variants={containerVariants}
+        initial="hidden"
+        animate={inView ? "show" : "hidden"}
+        className="flex flex-col gap-8 lg:gap-0 text-center lg:flex-row justify-center lg:justify-between items-center lg:items-start"
+      >
+        <motion.div className="flex flex-col text-gray-500 shrink-0 w-1/3">
+          <motion.a
+            variants={itemVariants}
             className="text-blue-500"
             href="https://maalik.dev"
             target="__blank"
           >
             Maalik
-          </a>
-          <p>
+          </motion.a>
+          <motion.p variants={itemVariants}>
             Jamali Residency
             <br /> Nashik, India
             <br />
             422011
-          </p>
+          </motion.p>
         </motion.div>
 
-        <motion.div className="flex flex-col text-gray-500">
-          <a
+        <motion.div className="flex flex-col text-gray-500 shrink-0 w-1/3">
+          <motion.a
+            variants={itemVariants}
             className="text-blue-500"
             href="https://maalik.dev"
             target="__blank"
           >
             Terms & Conditions
-          </a>
-          <p>© {new Date().getFullYear()} Malik Bagwala</p>
+          </motion.a>
+          <motion.p variants={itemVariants}>
+            © {new Date().getFullYear()} Malik Bagwala
+          </motion.p>
         </motion.div>
 
-        <motion.div className="flex flex-col text-gray-500">
+        <motion.div className="flex justify-center text-gray-500 w-1/3">
           <motion.div
             initial={{ gap: "16px" }}
-            whileHover={{ gap: "20px" }}
             className="flex fill-blue-300 items-center"
           >
-            {SOCIALS.map((social) => (
-              <AnimatedSocialIcon link={social.link} key={social.link}>
+            {SOCIALS.map((social, index) => (
+              <AnimatedSocialIcon
+                link={social.link}
+                key={social.link}
+                isFirst={index === 0}
+                isLast={index === SOCIALS.length - 1}
+              >
                 {social.icon}
               </AnimatedSocialIcon>
             ))}
