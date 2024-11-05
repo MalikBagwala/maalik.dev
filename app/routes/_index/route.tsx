@@ -3,7 +3,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { EntryFieldTypes } from "contentful";
 import { contentfulClient } from "~/services/contentful";
-import Contact from "./Contact";
+import Contact from "./Contact/Contact";
 import Footer from "./Footer";
 import Hero from "./Hero/Hero";
 import Projects, { ProjectsType } from "./Projects";
