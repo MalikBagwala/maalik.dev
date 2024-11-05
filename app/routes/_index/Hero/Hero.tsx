@@ -77,6 +77,8 @@ const Hero = () => {
               animate={isMounted ? "show" : "hidden"}
               variants={imageVariants}
               className="mb-auto h-[20vh] lg:h-[30vh] w-fit rounded-md"
+              height={180}
+              width={180}
               src="/avatar.png"
               alt="Avatar"
             />
