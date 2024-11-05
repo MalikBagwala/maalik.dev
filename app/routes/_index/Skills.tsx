@@ -94,7 +94,7 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
         loading="lazy"
         className="h-10 w-auto"
         src={skill.logo}
-        alt={skill.name}
+        alt={""}
         width={"auto"}
       />
       <p className="font-bold text-gray-800">{skill.name}</p>

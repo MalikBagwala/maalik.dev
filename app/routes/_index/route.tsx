@@ -8,7 +8,8 @@ import Footer from "./Footer";
 import Hero from "./Hero";
 import Projects, { ProjectsType } from "./Projects";
 import Skills from "./Skills";
-import Testimonials from "./Testimonials";
+import Testimonials, { TestimonialsType } from "./Testimonials";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 export const meta: MetaFunction = () => {
   return [
     { title: "Malik Bagwala | Freelance Software Engineer" },
@@ -40,12 +41,27 @@ type ProjectSkeleton = {
     stack: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<SkillsSkeleton>>;
   };
 };
+type TestimonialSkeleton = {
+  contentTypeId: "testimonials";
+  fields: {
+    weight: EntryFieldTypes.Number;
+    isHighlighted: EntryFieldTypes.Boolean;
+    clientAvatar: EntryFieldTypes.AssetLink;
+    clientName: EntryFieldTypes.Text;
+    clientDesignation: EntryFieldTypes.Text;
+    content: EntryFieldTypes.RichText;
+  };
+};
 export async function loader() {
   const response = await contentfulClient.getEntries<ProjectSkeleton>({
     content_type: "projects",
     order: ["-fields.weight", "fields.isFeatured"],
   });
-
+  const tResponse = await contentfulClient.getEntries<TestimonialSkeleton>({
+    content_type: "testimonials",
+    order: ["-fields.weight", "fields.isHighlighted"],
+  });
+  console.log(tResponse);
   const projects: ProjectsType & { total: number } = {
     projects: response.items.map(({ fields }) => {
       return {
@@ -58,21 +74,36 @@ export async function loader() {
         thumbnail: (fields.thumbnail as any)?.fields?.file?.url,
       };
     }),
+
     total: response.total,
+  };
+
+  const testimonials: TestimonialsType = {
+    testimonials: tResponse.items.map((item) => {
+      return {
+        id: item.sys.id,
+        avatar: (item.fields.clientAvatar as any)?.fields?.file?.url,
+        comment: documentToHtmlString(item.fields.content),
+        designation: item.fields.clientDesignation,
+        name: item.fields.clientName,
+      };
+    }),
+    total: tResponse.total,
   };
   return {
     projects,
-    
+    testimonials,
   };
 }
+
 export default function Index() {
-  const { projects } = useLoaderData<typeof loader>();
+  const { projects, testimonials } = useLoaderData<typeof loader>();
   return (
     <>
       <Hero />
       <Projects {...projects} />
       <Skills />
-      <Testimonials />
+      <Testimonials {...testimonials} />
       <Contact />
       <Footer />
     </>
