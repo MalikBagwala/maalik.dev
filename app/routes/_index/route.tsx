@@ -61,7 +61,6 @@ export async function loader() {
     content_type: "testimonials",
     order: ["-fields.weight", "fields.isHighlighted"],
   });
-  console.log(tResponse);
   const projects: ProjectsType & { total: number } = {
     projects: response.items.map(({ fields }) => {
       return {
