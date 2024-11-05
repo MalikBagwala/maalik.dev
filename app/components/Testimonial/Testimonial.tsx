@@ -55,11 +55,10 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
             "bg-gradient-to-r from-teal-600 to-blue-600 text-gray-50"
         )}
       >
-        <blockquote className="text-lg text-balance text-center leading-relaxed">
-          {'"'}
-          {testimonial.comment}
-          {'"'}
-        </blockquote>
+        <blockquote
+          className="text-lg text-balance text-center leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: testimonial.comment }}
+        />
         <footer className="flex items-center gap-4 justify-center mt-8">
           <img
             loading="lazy"
