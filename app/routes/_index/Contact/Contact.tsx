@@ -10,7 +10,7 @@ const Contact = () => {
     <Section id="contact">
       <motion.div
         ref={ref}
-        className="flex flex-col gap-8 lg:gap-0 lg:flex-row justify-center lg:justify-between items-start lg:items-center"
+        className="flex flex-col gap-8 lg:gap-0 lg:flex-row justify-center lg:justify-between items-center text-center lg:text-left"
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "show" : "hidden"}
