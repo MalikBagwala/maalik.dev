@@ -1,6 +1,7 @@
 import Section from "~/components/Section/Section";
-import { useSpring, animated } from "@react-spring/web";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 const SKILLS = [
   {
     name: "React",
@@ -58,9 +59,10 @@ const SKILLS = [
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Skill = ({ skill, index }: { skill: any; index: number }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
+  const ref = useRef<HTMLLIElement | null>(null);
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.1,
   });
 
   // Set random initial animation directions
@@ -71,20 +73,21 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
     "translateY(20px)",
   ];
   const initialTransform = directions[index % directions.length];
-  const delay = Math.random() * 200;
+  const delay = (Math.random() * 350) / 1000;
 
-  const animationProps = useSpring({
-    opacity: inView ? 1 : 0,
-    transform: inView ? "translate(0px, 0px)" : initialTransform,
-    config: { tension: 120, friction: 15 },
-    delay,
-  });
   return (
-    <animated.li
-      key={skill.name}
+    <motion.li
       ref={ref}
+      initial={{ opacity: 0, transform: initialTransform }}
+      animate={
+        inView ? { opacity: 1, transform: "translate(0px, 0px)" } : undefined
+      }
+      transition={{
+        duration: 1,
+        type: "spring",
+        delay,
+      }}
       style={{
-        ...animationProps,
         boxShadow:
           "0 2px 6px 0 rgba(0, 0, 0, .05), 0 0 3px 0 rgba(0, 0, 0, .1)",
       }}
@@ -98,7 +101,7 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
         width={"auto"}
       />
       <p className="font-bold text-gray-800">{skill.name}</p>
-    </animated.li>
+    </motion.li>
   );
 };
 

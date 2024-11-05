@@ -19,13 +19,13 @@ const Project = ({
   technologies,
 }: ProjectProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const isView = useInView(ref, { once: true });
+  const inView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, translateY: 100 }}
-      animate={isView ? { opacity: 1, translateY: 0 } : undefined}
+      animate={inView ? { opacity: 1, translateY: 0 } : undefined}
       className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white"
     >
       <div className="h-96 relative">

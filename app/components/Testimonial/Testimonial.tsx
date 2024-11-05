@@ -1,7 +1,7 @@
-import { animated, useInView } from "@react-spring/web";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import Star from "~/icons/Star";
-
 type TestimonialType = {
   index: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -9,39 +9,32 @@ type TestimonialType = {
 };
 
 const Testimonial = ({ index, testimonial }: TestimonialType) => {
-  // Determine column and animation direction
+  const ref = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(ref, { once: true, amount: 0.5 });
   const column = index % 3;
-  const delay = Math.random() * 300;
-
-  // Different animations based on column
-  const [ref, animationProps] = useInView(
-    () => ({
-      from: {
-        opacity: 0,
-        transform:
-          column === 0
-            ? "translateX(-30px)" // Left to right for col 1
-            : column === 1
-            ? "translateY(30px)" // Bottom to top for col 2
-            : "translateX(30px)", // Right to left for col 3
-      },
-      to: {
-        opacity: 1,
-        transform: "translateX(0px)",
-      },
-      config: { tension: 150, friction: 20 },
-      delay,
-    }),
-    { amount: 0.1, once: true } // Trigger only once when 10% of element is in view
-  );
-
+  const delay = (Math.random() * 350) / 1000;
   const isHighlight = testimonial.highlighted;
 
   return (
-    <animated.div
-      key={testimonial.id}
+    <motion.div
       ref={ref}
-      style={animationProps}
+      initial={{
+        opacity: 0,
+        translateX: column === 0 ? "-60px" : column === 2 ? "60px" : "0px",
+        translateY: column === 1 ? "60px" : "0px",
+      }}
+      animate={
+        inView
+          ? {
+              opacity: 1,
+              // transform: "translateX(0px) translateY(0px)",
+              translateX: "0px",
+              translateY: "0px",
+            }
+          : undefined
+      }
+      transition={{ duration: 1, type: "spring", delay }}
+      key={testimonial.id}
       id={`testimonials-${testimonial.id}`}
       className="flex justify-center items-center"
     >
@@ -101,7 +94,7 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
           </>
         )}
       </div>
-    </animated.div>
+    </motion.div>
   );
 };
 
