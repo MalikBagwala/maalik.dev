@@ -12,9 +12,11 @@ type ProjectType = {
 
 export type ProjectsType = {
   projects: ProjectType[];
+  selectedSlug?: string;
 };
-const Projects = ({ projects }: ProjectsType) => {
+const Projects = ({ projects, selectedSlug }: ProjectsType) => {
   if (!projects.length) return null;
+
   return (
     <Section
       className="bg-gray-50"
@@ -33,6 +35,7 @@ const Projects = ({ projects }: ProjectsType) => {
           sourceCodeLink={project.sourceCodeLink}
           technologies={project.technologies}
           slug={project.slug}
+          isSelected={project.slug === selectedSlug}
         />
       ))}
     </Section>

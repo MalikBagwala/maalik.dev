@@ -7,13 +7,16 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useParams,
 } from "@remix-run/react";
 
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { twMerge } from "tailwind-merge";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
+import { Overlay } from "./components/Project/Project";
 import Projects, { ProjectsType } from "./components/Projects";
 import Skills from "./components/Skills";
 import Testimonials, { TestimonialsType } from "./components/Testimonials";
@@ -89,6 +92,7 @@ export async function loader() {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { slug } = useParams();
   const { projects, testimonials } = useLoaderData<typeof loader>();
 
   return (
@@ -99,15 +103,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="min-h-screen bg-white text-gray-700 overflow-x-hidden">
+      <body
+        className={twMerge(
+          "min-h-screen bg-white text-gray-700 overflow-x-hidden",
+          slug ? "overflow-y-hidden" : null
+        )}
+      >
         <Navbar />
+
         <main>
           <Hero />
-          <Projects {...projects} />
+          <Projects {...projects} selectedSlug={slug} />
           <Skills />
           <Testimonials {...testimonials} />
           <Contact />
           <Footer />
+          <Overlay isSelected={slug ? true : false} />
           {children}
         </main>
         <ScrollRestoration />

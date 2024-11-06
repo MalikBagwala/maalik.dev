@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { twMerge } from "tailwind-merge";
 import Github from "~/icons/Github";
 type ProjectProps = {
   title: string;
@@ -10,7 +11,27 @@ type ProjectProps = {
   sourceCodeLink: string;
   technologies: string[];
   slug: string;
+  isSelected: boolean;
 };
+
+export const Overlay = ({ isSelected }: { isSelected: boolean }) => (
+  <motion.div
+    initial={false}
+    animate={{
+      opacity: isSelected ? 1 : 0,
+      backdropFilter: isSelected ? "blur(5px)" : undefined,
+    }}
+    transition={{ duration: 0.2 }}
+    style={{ pointerEvents: isSelected ? "auto" : "none" }}
+    className="overlay"
+  >
+    <Link
+      className="w-full h-full inline-block"
+      to="/"
+      preventScrollReset={true}
+    />
+  </motion.div>
+);
 
 const Project = ({
   title,
@@ -20,23 +41,38 @@ const Project = ({
   sourceCodeLink,
   technologies,
   slug,
+  isSelected = false,
 }: ProjectProps) => {
+  console.log(isSelected, slug);
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <motion.div
+      id={slug}
       ref={ref}
       initial={{ opacity: 0, translateY: 100 }}
       animate={inView ? { opacity: 1, translateY: 0 } : undefined}
-      className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white"
+      className={twMerge(
+        "transform rounded-lg mb-10 last:mb-0 text-gray-700 bg-white",
+        isSelected
+          ? "fixed top-8 left-1/2 !-translate-x-1/2 mx-auto w-[50%] z-[10000] overflow-y-auto h-full"
+          : "border shadow-lg"
+      )}
     >
-      <Link className="h-96 relative cursor-pointer" to={`/p/${slug}`}>
+      <Link
+        className="h-96 relative cursor-pointer"
+        to={`/p/${slug}`}
+        preventScrollReset={true}
+      >
         <img
           loading="lazy"
           src={thumbnail}
           alt={`${title} thumbnail`}
-          className="w-full h-full object-cover rounded-t-lg"
+          className={twMerge(
+            "w-full h-full object-cover",
+            isSelected ? "rounded-t-lg" : "rounded-lg"
+          )}
         />
         <div className="absolute top-0 left-0 w-full p-4 flex flex-col justify-between h-full">
           <div className="flex justify-between">
@@ -69,9 +105,11 @@ const Project = ({
           </div>
         </div>
       </Link>
-      <div className="p-4">
-        <p className="text-gray-700 leading-relaxed text-lg">{description}</p>
-      </div>
+      {isSelected && (
+        <div className="p-4">
+          <p className="text-gray-700 leading-relaxed text-lg">{description}</p>
+        </div>
+      )}
     </motion.div>
   );
 };
