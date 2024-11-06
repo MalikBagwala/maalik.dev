@@ -31,7 +31,11 @@ const Project = ({
       animate={inView ? { opacity: 1, translateY: 0 } : undefined}
       className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white"
     >
-      <Link className="h-96 relative cursor-pointer" to={`/p/${slug}`}>
+      <Link
+        className="h-96 relative cursor-pointer"
+        to={`/p/${slug}`}
+        preventScrollReset
+      >
         <img
           loading="lazy"
           src={thumbnail}
