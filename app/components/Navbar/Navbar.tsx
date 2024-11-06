@@ -34,7 +34,7 @@ const Navbar = () => {
               return (
                 <NavLink
                   key={link.to}
-                  to={link.to}
+                  to={{ hash: link.to, pathname: "/" }}
                   className="relative transition-colors ease-out"
                 >
                   <motion.span
