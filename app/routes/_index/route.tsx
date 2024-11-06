@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { EntryFieldTypes } from "contentful";
@@ -9,7 +10,6 @@ import Hero from "./Hero/Hero";
 import Projects, { ProjectsType } from "./Projects";
 import Skills from "./Skills";
 import Testimonials, { TestimonialsType } from "./Testimonials";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 export const meta: MetaFunction = () => {
   return [
     { title: "Malik Bagwala | Freelance Software Engineer" },

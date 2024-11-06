@@ -32,6 +32,7 @@ const Projects = ({ projects }: ProjectsType) => {
           liveLink={project.liveLink}
           sourceCodeLink={project.sourceCodeLink}
           technologies={project.technologies}
+          slug={project.slug}
         />
       ))}
     </Section>
