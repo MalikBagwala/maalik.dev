@@ -3,13 +3,13 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { EntryFieldTypes } from "contentful";
+import Contact from "~/components/Contact/Contact";
+import Hero from "~/components/Hero/Hero";
 import { contentfulClient } from "~/services/contentful";
-import Contact from "./Contact/Contact";
-import Footer from "./Footer";
-import Hero from "./Hero/Hero";
-import Projects, { ProjectsType } from "./Projects";
-import Skills from "./Skills";
-import Testimonials, { TestimonialsType } from "./Testimonials";
+import Footer from "../components/Footer";
+import Projects, { ProjectsType } from "../components/Projects";
+import Skills from "../components/Skills";
+import Testimonials, { TestimonialsType } from "../components/Testimonials";
 export const meta: MetaFunction = () => {
   return [
     { title: "Malik Bagwala | Freelance Software Engineer" },
