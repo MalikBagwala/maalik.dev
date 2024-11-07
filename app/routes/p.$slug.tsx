@@ -1,5 +1,15 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet, useNavigate } from "@remix-run/react";
+import SpringModal from "~/components/ProjectModal/ProjectModal";
 
 export default function ProjectDetail() {
-  return <Outlet />;
+  const navigate = useNavigate();
+  return (
+    <>
+      <Outlet />
+      <SpringModal
+        isOpen={true}
+        onClose={() => navigate("/", { preventScrollReset: false })}
+      />
+    </>
+  );
 }

@@ -15,7 +15,7 @@ const Navbar = () => {
   const { hash } = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-[1000]">
+    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-10">
       <div className="container py-4">
         <div className="flex text-lg">
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">
