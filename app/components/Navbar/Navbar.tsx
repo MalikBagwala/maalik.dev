@@ -2,6 +2,7 @@ import { Link, NavLink, useLocation } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import resolvedConfig from "~/utils/tailwindConfig";
 
 export const LINKS = [
   { to: "#projects", name: "Projects" },
@@ -38,7 +39,10 @@ const Navbar = () => {
                   className="relative transition-colors ease-out"
                 >
                   <motion.span
-                    whileHover={{ y: 2 }}
+                    whileHover={{
+                      y: 2,
+                      color: resolvedConfig.theme.colors.blue[600],
+                    }}
                     className={twMerge(
                       "transition-colors ease-out",
                       isActive ? "text-blue-600" : "text-gray-700"
