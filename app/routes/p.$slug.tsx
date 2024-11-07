@@ -8,7 +8,7 @@ export default function ProjectDetail() {
       <Outlet />
       <SpringModal
         isOpen={true}
-        onClose={() => navigate("/", { preventScrollReset: false })}
+        onClose={() => navigate("/", { preventScrollReset: true })}
       />
     </>
   );
