@@ -2,19 +2,22 @@ import { Link, NavLink, useLocation } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import resolvedConfig from "~/utils/tailwindConfig";
 
-export const LINKS = [
-  { to: "#projects", name: "Projects" },
-  { to: "#skills", name: "Skills" },
-  { to: "#testimonials", name: "Testimonials" },
-  { to: "#contact", name: "Contact" },
-];
 
-const Navbar = () => {
+
+export type LinkType = {
+  to: string;
+  name: string;
+};
+export type NavBarType = {
+  links: LinkType[];
+};
+const Navbar = ({ links }: NavBarType) => {
   const { hash } = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-[1000]">
+    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-10">
       <div className="container py-4">
         <div className="flex text-lg">
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">
@@ -26,19 +29,22 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="visible md:hidden">
-            <MobileMenu activeSection={hash} />
+            <MobileMenu activeSection={hash} links={links} />
           </div>
           <div className="hidden md:flex gap-6">
-            {LINKS.map((link) => {
+            {links.map((link) => {
               const isActive = link.to === hash;
               return (
                 <NavLink
                   key={link.to}
-                  to={link.to}
+                  to={{ hash: link.to, pathname: "/" }}
                   className="relative transition-colors ease-out"
                 >
                   <motion.span
-                    whileHover={{ y: 2 }}
+                    whileHover={{
+                      y: 2,
+                      color: resolvedConfig.theme.colors.blue[600],
+                    }}
                     className={twMerge(
                       "transition-colors ease-out",
                       isActive ? "text-blue-600" : "text-gray-700"

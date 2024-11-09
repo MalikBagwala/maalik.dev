@@ -1,10 +1,22 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-export type ButtonType = ComponentPropsWithoutRef<"button">;
-const Button = ({ className, children, ...props }: ButtonType) => {
+export type ButtonProps<T extends ElementType> = {
+  as?: T;
+  className?: string;
+  children: ReactNode;
+} & ComponentPropsWithoutRef<T>;
+
+const Button = <T extends ElementType = "button">({
+  as,
+  className,
+  children,
+  ...props
+}: ButtonProps<T>) => {
+  const Component = as || "button";
+
   return (
-    <button
+    <Component
       className={twMerge(
         "text-white px-8 py-3 text-lg shadow-md relative text-opacity-95",
         "bg-gradient-to-r from-teal-500 to-blue-700",
@@ -21,7 +33,7 @@ const Button = ({ className, children, ...props }: ButtonType) => {
       {...props}
     >
       <span className="relative z-10">{children}</span>
-    </button>
+    </Component>
   );
 };
 

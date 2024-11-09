@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Github from "~/icons/Github";
@@ -8,6 +9,7 @@ type ProjectProps = {
   liveLink: string;
   sourceCodeLink: string;
   technologies: string[];
+  slug: string;
 };
 
 const Project = ({
@@ -17,6 +19,7 @@ const Project = ({
   liveLink,
   sourceCodeLink,
   technologies,
+  slug,
 }: ProjectProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
@@ -26,10 +29,15 @@ const Project = ({
       ref={ref}
       initial={{ opacity: 0, translateY: 100 }}
       animate={inView ? { opacity: 1, translateY: 0 } : undefined}
+      whileHover={{ scale: 1.05 }}
       className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white"
     >
-      <div className="h-96 relative">
-        <img
+      <Link
+        className="h-96 relative cursor-pointer"
+        to={`/p/${slug}`}
+        preventScrollReset
+      >
+        <motion.img
           loading="lazy"
           src={thumbnail}
           alt={`${title} thumbnail`}
@@ -65,7 +73,7 @@ const Project = ({
             ))}
           </div>
         </div>
-      </div>
+      </Link>
       <div className="p-4">
         <p className="text-gray-700 leading-relaxed text-lg">{description}</p>
       </div>

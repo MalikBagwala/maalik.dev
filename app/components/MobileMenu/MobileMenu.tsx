@@ -1,12 +1,15 @@
+import { Link } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 import CloseIcon from "~/icons/CloseIcon";
 import Hamburger from "~/icons/Hamburger";
-import { LINKS } from "../Navbar/Navbar";
-import { twMerge } from "tailwind-merge";
-import { Link } from "@remix-run/react";
+import { NavBarType } from "../Navbar/Navbar";
 
-const MobileMenu = ({ activeSection }: { activeSection: string | null }) => {
+const MobileMenu = ({
+  activeSection,
+  links,
+}: { activeSection: string | null } & NavBarType) => {
   const [isOpen, setOpen] = useState(false);
   const [showLinks, setShowLinks] = useState(false); // State to control link animation
 
@@ -57,7 +60,7 @@ const MobileMenu = ({ activeSection }: { activeSection: string | null }) => {
             }}
           >
             <motion.ul initial="hidden" animate={showLinks ? "show" : "hidden"}>
-              {LINKS.map((link, index) => {
+              {links.map((link, index) => {
                 const isActive = activeSection === link.to;
                 return (
                   <Link
