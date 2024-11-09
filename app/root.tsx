@@ -98,6 +98,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="d48f5ced-0865-421a-abb7-9856adb60d41"
+        ></script>
       </head>
       <body className="min-h-screen bg-white text-gray-700 overflow-x-hidden">
         <Navbar />
