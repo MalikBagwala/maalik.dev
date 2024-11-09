@@ -4,14 +4,16 @@ import { twMerge } from "tailwind-merge";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import resolvedConfig from "~/utils/tailwindConfig";
 
-export const LINKS = [
-  { to: "#projects", name: "Projects" },
-  { to: "#skills", name: "Skills" },
-  { to: "#testimonials", name: "Testimonials" },
-  { to: "#contact", name: "Contact" },
-];
 
-const Navbar = () => {
+
+export type LinkType = {
+  to: string;
+  name: string;
+};
+export type NavBarType = {
+  links: LinkType[];
+};
+const Navbar = ({ links }: NavBarType) => {
   const { hash } = useLocation();
 
   return (
@@ -27,10 +29,10 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="visible md:hidden">
-            <MobileMenu activeSection={hash} />
+            <MobileMenu activeSection={hash} links={links} />
           </div>
           <div className="hidden md:flex gap-6">
-            {LINKS.map((link) => {
+            {links.map((link) => {
               const isActive = link.to === hash;
               return (
                 <NavLink

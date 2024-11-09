@@ -8,6 +8,7 @@ import {
   imageVariants,
   itemVariants,
 } from "./Hero.animations";
+import { Link } from "@remix-run/react";
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -60,7 +61,9 @@ const Hero = () => {
               className="flex items-center gap-4"
               variants={itemVariants}
             >
-              <Button>View my work</Button>
+              <Button as={Link} to={{ hash: "projects" }}>
+                View my work
+              </Button>
               <a
                 className="text-lg font-semibold text-teal-500"
                 href={SOCIALS[0].link}

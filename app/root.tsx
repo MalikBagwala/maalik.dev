@@ -91,6 +91,20 @@ export async function loader() {
 export function Layout({ children }: { children: React.ReactNode }) {
   const { projects, testimonials } = useLoaderData<typeof loader>();
 
+  const LINKS = [
+    {
+      to: "#projects",
+      name: "Projects",
+      render: projects.total ? true : false,
+    },
+    { to: "#skills", name: "Skills" },
+    {
+      to: "#testimonials",
+      name: "Testimonials",
+      render: testimonials.total ? true : false,
+    },
+    { to: "#contact", name: "Contact" },
+  ].filter((l) => l.render !== false);
   return (
     <html lang="en">
       <head>
@@ -105,7 +119,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         ></script>
       </head>
       <body className="min-h-screen bg-white text-gray-700 overflow-x-hidden">
-        <Navbar />
+        <Navbar links={LINKS} />
         <main>
           <Hero />
           <Projects {...projects} />
