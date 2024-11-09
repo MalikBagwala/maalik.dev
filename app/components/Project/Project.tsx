@@ -29,6 +29,7 @@ const Project = ({
       ref={ref}
       initial={{ opacity: 0, translateY: 100 }}
       animate={inView ? { opacity: 1, translateY: 0 } : undefined}
+      whileHover={{ scale: 1.05 }}
       className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white"
     >
       <Link
@@ -36,7 +37,7 @@ const Project = ({
         to={`/p/${slug}`}
         preventScrollReset
       >
-        <img
+        <motion.img
           loading="lazy"
           src={thumbnail}
           alt={`${title} thumbnail`}
