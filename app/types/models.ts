@@ -19,6 +19,7 @@ export type ProjectSkeleton = {
     description: EntryFieldTypes.Text;
     thumbnail: EntryFieldTypes.AssetLink;
     stack: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<SkillsSkeleton>>;
+    body: EntryFieldTypes.RichText;
   };
 };
 

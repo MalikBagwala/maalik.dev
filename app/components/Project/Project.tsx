@@ -19,7 +19,7 @@ const Project = (project: ProjectProps) => {
     thumbnail,
     liveLink,
     sourceCodeLink,
-    technologies,
+
     slug,
   } = project;
   const ref = useRef<HTMLDivElement | null>(null);
@@ -65,16 +65,6 @@ const Project = (project: ProjectProps) => {
             >
               <Github fill="white" height={24} />
             </a>
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            {technologies.map((tech) => (
-              <span
-                key={tech}
-                className="text-xs px-2 py-1 text-gray-100 font-semibold backdrop-blur-md backdrop-saturate-100 backdrop-brightness-[0.7] rounded-full hover:backdrop-brightness-[0.4]"
-              >
-                {tech}
-              </span>
-            ))}
           </div>
         </div>
       </Link>

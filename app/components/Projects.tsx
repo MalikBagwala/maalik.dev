@@ -8,6 +8,7 @@ export type ProjectType = {
   sourceCodeLink: string;
   technologies: string[];
   slug: string;
+  body?: string;
 };
 
 export type ProjectsType = {
