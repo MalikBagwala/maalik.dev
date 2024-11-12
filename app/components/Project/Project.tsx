@@ -46,6 +46,7 @@ const Project = ({
         <div className="absolute top-0 left-0 w-full p-4 flex flex-col justify-between h-full">
           <div className="flex justify-between">
             <a
+              onClick={(e) => e.stopPropagation()}
               href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -54,6 +55,7 @@ const Project = ({
               {title}
             </a>
             <a
+              onClick={(e) => e.stopPropagation()}
               href={sourceCodeLink}
               target="_blank"
               rel="noopener noreferrer"
