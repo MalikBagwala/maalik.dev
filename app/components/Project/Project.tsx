@@ -12,15 +12,16 @@ type ProjectProps = {
   slug: string;
 };
 
-const Project = ({
-  title,
-  description,
-  thumbnail,
-  liveLink,
-  sourceCodeLink,
-  technologies,
-  slug,
-}: ProjectProps) => {
+const Project = (project: ProjectProps) => {
+  const {
+    title,
+    description,
+    thumbnail,
+    liveLink,
+    sourceCodeLink,
+    technologies,
+    slug,
+  } = project;
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -34,8 +35,9 @@ const Project = ({
     >
       <Link
         className="h-96 relative cursor-pointer"
-        to={`/p/${slug}`}
         preventScrollReset
+        to={{ pathname: `/p/${slug}` }}
+        state={project}
       >
         <motion.img
           loading="lazy"

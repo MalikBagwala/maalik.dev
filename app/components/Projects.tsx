@@ -1,6 +1,6 @@
 import Project from "~/components/Project/Project";
 import Section from "~/components/Section/Section";
-type ProjectType = {
+export type ProjectType = {
   title: string;
   description: string;
   thumbnail: string;

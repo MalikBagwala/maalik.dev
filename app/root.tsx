@@ -49,6 +49,15 @@ export async function loader() {
   const response = await contentfulClient.getEntries<ProjectSkeleton>({
     content_type: "projects",
     order: ["-fields.weight", "fields.isFeatured"],
+    select: [
+      "fields.title",
+      "fields.isFeatured",
+      "fields.slug",
+      "fields.live",
+      "fields.source",
+      "fields.thumbnail",
+      "fields.description",
+    ],
   });
   const tResponse = await contentfulClient.getEntries<TestimonialSkeleton>({
     content_type: "testimonials",
@@ -58,7 +67,7 @@ export async function loader() {
     projects: response.items.map(({ fields }) => {
       return {
         title: fields.title,
-        technologies: fields.stack.map((stack) => (stack as any).fields.name),
+        technologies: [],
         liveLink: fields.live,
         sourceCodeLink: fields.source,
         slug: fields.slug,
@@ -66,7 +75,6 @@ export async function loader() {
         thumbnail: (fields.thumbnail as any)?.fields?.file?.url,
       };
     }),
-
     total: response.total,
   };
 
