@@ -49,7 +49,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
             className={twMerge(
               "absolute top-12 lg:top-24 bottom-0 left-1/2 h-[calc(100dvh-3rem)] lg:h-[calc(100dvh-7rem)] overflow-y-auto",
               "w-full max-w-full lg:max-w-4xl",
-              "bg-white text-gray-600 border border-gray-300 p-6 rounded-t-lg lg:rounded-b-lg shadow-xl cursor-default"
+              "bg-white text-gray-600 border-t lg:border border-gray-300 p-6 rounded-t-lg lg:rounded-b-lg shadow-xl cursor-default"
             )}
           >
             {/* Close button */}
