@@ -9,7 +9,6 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      console.log(node.data.target.metadata, "NODE");
       const url = node.data.target.fields.file.url;
       const alt = node.data.target.fields.title || "Embedded Image";
       // Determine media type based on file extension or MIME type
@@ -62,7 +61,6 @@ export async function loader({ params }: { params: { id: string } }) {
 export default function ProjectDetail() {
   const navigate = useNavigate();
   const remoteProjectData = useLoaderData<typeof loader>();
-  console.log(remoteProjectData);
   return (
     <>
       <Outlet />

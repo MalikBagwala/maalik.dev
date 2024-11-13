@@ -23,11 +23,11 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, backdropFilter: "none" }}
+          animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="backdrop-blur p-8 fixed inset-0 z-50 cursor-pointer overflow-hidden"
+          className="p-8 fixed inset-0 z-50 cursor-pointer overflow-hidden"
         >
           <motion.div
             initial={{
@@ -37,7 +37,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
             }}
             animate={{ opacity: 1, translateY: 0 }}
             exit={{ opacity: 0, translateY: "100%" }}
-            transition={{ duration: 0.34 }}
+            transition={{ duration: 0.37 }}
             onClick={(e) => e.stopPropagation()}
             drag="y"
             dragConstraints={{ top: 0, bottom: 100 }}
