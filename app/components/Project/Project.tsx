@@ -67,7 +67,10 @@ const Project = (project: ProjectProps) => {
         </div>
       </Link>
       <div className="p-4">
-        <p className="text-gray-700 leading-relaxed text-lg">{description}</p>
+        <article
+          className="prose leading-relaxed text-lg"
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></article>
       </div>
     </motion.div>
   );
