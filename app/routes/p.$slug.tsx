@@ -33,8 +33,8 @@ const renderOptions = {
     },
   },
 };
-export async function loader({ params }: { params: { id: string } }) {
-  const projectId = params.id;
+export async function loader({ params }: { params: { slug: string } }) {
+  const projectId = params.slug;
   const response = await contentfulClient.getEntries<ProjectSkeleton>({
     content_type: "projects",
     "fields.slug": projectId,
