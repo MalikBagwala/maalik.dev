@@ -1,5 +1,5 @@
 import { useMediaQuery } from "@mantine/hooks";
-import config from "../../tailwind.config";
+import resolvedConfig from "~/utils/tailwindConfig";
 export const useMobile = () => {
-  return useMediaQuery(`(max-width: ${config.theme.screens.sm})`);
+  return useMediaQuery(`(max-width: ${resolvedConfig.theme.screens.sm})`);
 };
