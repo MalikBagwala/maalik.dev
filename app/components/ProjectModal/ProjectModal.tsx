@@ -39,13 +39,6 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
             exit={{ opacity: 0, translateY: "100%" }}
             transition={{ duration: 0.37 }}
             onClick={(e) => e.stopPropagation()}
-            drag="y"
-            dragConstraints={{ top: 0, bottom: 100 }}
-            dragElastic={0.2}
-            onDragEnd={(e, { offset, velocity }) => {
-              // Close if the drag is fast or dragged down far enough
-              if (offset.y > 100 || velocity.y > 500) onClose();
-            }}
             className={twMerge(
               "absolute top-12 lg:top-24 bottom-0 left-1/2 h-[calc(100dvh-3rem)] lg:h-[calc(100dvh-7rem)] overflow-y-auto",
               "w-full max-w-full lg:max-w-4xl",
