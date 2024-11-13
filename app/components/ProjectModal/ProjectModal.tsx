@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { ProjectType } from "../Projects";
 
@@ -10,6 +10,10 @@ type SpringModalType = {
 };
 
 const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
+  const lastScrollTime = useRef(Date.now());
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -18,6 +22,25 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollableDiv = e.currentTarget;
+    const currentScrollY = scrollableDiv.scrollTop;
+    const currentTime = Date.now();
+
+    // Calculate velocity (pixels per millisecond)
+    const timeDelta = currentTime - lastScrollTime.current;
+    const scrollDelta = lastScrollY.current - currentScrollY;
+    const velocity = scrollDelta / timeDelta;
+
+    // If we're at the top and scrolling up with enough velocity, close the modal
+    if (currentScrollY <= 0 && velocity > 0.7) {
+      onClose();
+    }
+
+    lastScrollY.current = currentScrollY;
+    lastScrollTime.current = currentTime;
+  };
 
   return (
     <AnimatePresence>
@@ -30,6 +53,8 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
           className="p-8 fixed inset-0 z-50 cursor-pointer overflow-hidden"
         >
           <motion.div
+            ref={scrollRef}
+            onScroll={handleScroll}
             initial={{
               opacity: 0,
               translateX: "-50%",
