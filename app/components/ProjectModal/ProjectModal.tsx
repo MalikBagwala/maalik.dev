@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { ProjectType } from "../Projects";
 
@@ -10,6 +10,10 @@ type SpringModalType = {
 };
 
 const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
+  const lastScrollTime = useRef(Date.now());
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -19,17 +23,38 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
     };
   }, [isOpen]);
 
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollableDiv = e.currentTarget;
+    const currentScrollY = scrollableDiv.scrollTop;
+    const currentTime = Date.now();
+
+    // Calculate velocity (pixels per millisecond)
+    const timeDelta = currentTime - lastScrollTime.current;
+    const scrollDelta = lastScrollY.current - currentScrollY;
+    const velocity = scrollDelta / timeDelta;
+
+    // If we're at the top and scrolling up with enough velocity, close the modal
+    if (currentScrollY <= 0 && velocity > 0.7) {
+      onClose();
+    }
+
+    lastScrollY.current = currentScrollY;
+    lastScrollTime.current = currentTime;
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, backdropFilter: "none" }}
+          animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="backdrop-blur p-8 fixed inset-0 z-50 cursor-pointer overflow-hidden"
+          className="p-8 fixed inset-0 z-50 cursor-pointer overflow-hidden"
         >
           <motion.div
+            ref={scrollRef}
+            onScroll={handleScroll}
             initial={{
               opacity: 0,
               translateX: "-50%",
@@ -37,15 +62,8 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
             }}
             animate={{ opacity: 1, translateY: 0 }}
             exit={{ opacity: 0, translateY: "100%" }}
-            transition={{ duration: 0.34 }}
+            transition={{ duration: 0.37 }}
             onClick={(e) => e.stopPropagation()}
-            drag="y"
-            dragConstraints={{ top: 0, bottom: 100 }}
-            dragElastic={0.2}
-            onDragEnd={(e, { offset, velocity }) => {
-              // Close if the drag is fast or dragged down far enough
-              if (offset.y > 100 || velocity.y > 500) onClose();
-            }}
             className={twMerge(
               "absolute top-12 lg:top-24 bottom-0 left-1/2 h-[calc(100dvh-3rem)] lg:h-[calc(100dvh-7rem)] overflow-y-auto",
               "w-full max-w-full lg:max-w-4xl",
