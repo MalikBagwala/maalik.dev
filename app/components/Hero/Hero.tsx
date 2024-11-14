@@ -27,7 +27,7 @@ const Hero = () => {
             initial="hidden"
             animate={isMounted ? "show" : "hidden"}
           >
-            <motion.h3
+            <motion.p
               className="flex text-2xl gap-2 text-gray-500"
               variants={itemVariants}
             >
@@ -39,7 +39,7 @@ const Hero = () => {
                 variants={handVariants}
                 animate="wave"
               />
-            </motion.h3>
+            </motion.p>
 
             <motion.h1
               className="text-4xl font-bold text-gray-800"
@@ -48,14 +48,14 @@ const Hero = () => {
               Fullstack Engineer (ex-CTO)
             </motion.h1>
 
-            <motion.h4
+            <motion.h2
               className="text-balance text-2xl text-gray-500"
               variants={itemVariants}
             >
               I help people and brands reach their business goals by designing &
               building customer-centric software products and interactive
               experiences
-            </motion.h4>
+            </motion.h2>
 
             <motion.div
               className="flex items-center gap-4"
@@ -65,7 +65,7 @@ const Hero = () => {
                 View my work
               </Button>
               <a
-                className="text-lg font-semibold text-teal-500"
+                className="text-lg font-semibold text-teal-700"
                 href={SOCIALS[0].link}
                 target="__blank"
               >
