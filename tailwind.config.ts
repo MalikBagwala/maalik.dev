@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "selector",
   theme: {
     boxShadow: {
       DEFAULT: "0 2px 4px 0 rgba(14, 30, 37, 0.12)",

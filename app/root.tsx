@@ -20,6 +20,8 @@ import Testimonials, { TestimonialsType } from "./components/Testimonials";
 import { contentfulClient } from "./services/contentful";
 import "./tailwind.css";
 import { ProjectSkeleton, TestimonialSkeleton } from "./types/models";
+import { twMerge } from "tailwind-merge";
+import { useDarkMode } from "./hooks/useDarkMode";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -98,7 +100,7 @@ export async function loader() {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { projects, testimonials } = useLoaderData<typeof loader>();
-
+  const { isDarkMode } = useDarkMode();
   const LINKS = [
     {
       to: "#projects",
@@ -113,6 +115,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     },
     { to: "#contact", name: "Contact" },
   ].filter((l) => l.render !== false);
+
   return (
     <html lang="en">
       <head>
@@ -126,7 +129,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
           data-website-id="d48f5ced-0865-421a-abb7-9856adb60d41"
         ></script>
       </head>
-      <body className="min-h-screen bg-white text-gray-700 overflow-x-hidden">
+      <body
+        className={twMerge(
+          "min-h-screen bg-white text-gray-700 overflow-x-hidden",
+          isDarkMode && "dark"
+        )}
+      >
         <Navbar links={LINKS} />
         <main>
           <Hero />

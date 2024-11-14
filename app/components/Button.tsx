@@ -32,7 +32,7 @@ const Button = <T extends ElementType = "button">({
       )}
       {...props}
     >
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-0">{children}</span>
     </Component>
   );
 };

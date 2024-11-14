@@ -4,8 +4,6 @@ import { twMerge } from "tailwind-merge";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import resolvedConfig from "~/utils/tailwindConfig";
 
-
-
 export type LinkType = {
   to: string;
   name: string;
