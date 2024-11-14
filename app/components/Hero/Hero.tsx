@@ -82,7 +82,7 @@ const Hero = () => {
               className="mb-auto h-[20vh] lg:h-[30vh] w-fit rounded-md"
               height={180}
               width={180}
-              src="/avatar.png"
+              src="/avatar.webp"
               alt="Avatar"
             />
           </div>
