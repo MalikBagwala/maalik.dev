@@ -10,6 +10,7 @@ import {
 } from "@remix-run/react";
 
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { twMerge } from "tailwind-merge";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero/Hero";
@@ -98,7 +99,6 @@ export async function loader() {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { projects, testimonials } = useLoaderData<typeof loader>();
-
   const LINKS = [
     {
       to: "#projects",
@@ -113,6 +113,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     },
     { to: "#contact", name: "Contact" },
   ].filter((l) => l.render !== false);
+
   return (
     <html lang="en">
       <head>
@@ -126,7 +127,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
           data-website-id="d48f5ced-0865-421a-abb7-9856adb60d41"
         ></script>
       </head>
-      <body className="min-h-screen bg-white text-gray-700 overflow-x-hidden">
+      <body
+        className={twMerge(
+          "min-h-screen bg-white text-gray-700 overflow-x-hidden"
+        )}
+      >
         <Navbar links={LINKS} />
         <main>
           <Hero />
