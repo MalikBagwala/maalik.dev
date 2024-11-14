@@ -20,7 +20,7 @@ const Hero = () => {
   return (
     <section className="border-b border-gray-200 content">
       <div className="container">
-        <div className="flex flex-col gap-4 lg:flex-row justify-between min-h-[calc(70vh)] lg:pt-20">
+        <div className="flex flex-col gap-4 lg:flex-row justify-between min-h-[calc(70dvh)] lg:pt-20">
           <motion.div
             className="flex flex-col gap-4"
             variants={containerVariants}
