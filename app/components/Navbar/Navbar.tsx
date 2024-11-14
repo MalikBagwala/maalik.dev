@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
+import { useEffect, useState } from "react";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import resolvedConfig from "~/utils/tailwindConfig";
 
@@ -11,8 +12,14 @@ export type LinkType = {
 export type NavBarType = {
   links: LinkType[];
 };
+
 const Navbar = ({ links }: NavBarType) => {
   const { hash } = useLocation();
+  const [activeHash, setActiveHash] = useState("");
+
+  useEffect(() => {
+    setActiveHash(hash);
+  }, [hash]);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-10">
@@ -27,11 +34,11 @@ const Navbar = ({ links }: NavBarType) => {
             </Link>
           </div>
           <div className="visible md:hidden">
-            <MobileMenu activeSection={hash} links={links} />
+            <MobileMenu activeSection={activeHash} links={links} />
           </div>
           <div className="hidden md:flex gap-6">
             {links.map((link) => {
-              const isActive = link.to === hash;
+              const isActive = link.to === activeHash;
               return (
                 <NavLink
                   key={link.to}
