@@ -16,12 +16,12 @@ const Contact = () => {
         animate={inView ? "show" : "hidden"}
       >
         <div className="flex flex-col gap-4 lg:gap-6">
-          <motion.h6
+          <motion.p
             variants={itemVariants}
             className="text-3xl lg:text-4xl text-gray-800 font-bold"
           >
-            In need of a designer/developer?
-          </motion.h6>
+            In need of a developer?
+          </motion.p>
           <motion.p
             variants={itemVariants}
             className="text-xl lg:text-2xl text-blue-500"
