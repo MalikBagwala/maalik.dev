@@ -24,7 +24,7 @@ const Navbar = ({ links }: NavBarType) => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-10">
       <div className="container py-4">
-        <div className="flex text-lg">
+        <div className="flex text-lg justify-center items-center">
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">
             <img src="/logo.webp" height={30} width={30} alt="Logo" />
             <Link to={"/"}>
@@ -33,7 +33,7 @@ const Navbar = ({ links }: NavBarType) => {
               </h1>
             </Link>
           </div>
-          <div className="visible md:hidden">
+          <div className="visible md:hidden flex justify-center items-center">
             <MobileMenu activeSection={activeHash} links={links} />
           </div>
           <div className="hidden md:flex gap-6">
