@@ -2,8 +2,7 @@ import { Link } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import CloseIcon from "~/icons/CloseIcon";
-import Hamburger from "~/icons/Hamburger";
+import HamburgerButton from "../HamburgerButton/HamburgerButton";
 import { NavBarType } from "../Navbar/Navbar";
 
 const MobileMenu = ({
@@ -27,25 +26,8 @@ const MobileMenu = ({
   };
 
   return (
-    <div>
-      <AnimatePresence>
-        {isOpen ? (
-          <CloseIcon
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            exit={{ rotate: 0 }}
-            onClick={toggleOpen}
-          />
-        ) : (
-          <Hamburger
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            exit={{ rotate: 0 }}
-            onClick={toggleOpen}
-          />
-        )}
-      </AnimatePresence>
-
+    <>
+      <HamburgerButton isOpen={isOpen} setOpen={setOpen} />
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -92,7 +74,7 @@ const MobileMenu = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ import {
   itemVariants,
 } from "./Hero.animations";
 import { Link } from "@remix-run/react";
+import RotateWords from "../RotateWords/RotateWords";
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -18,7 +19,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="border-b border-gray-200 content">
+    <section
+      style={{
+        background:
+          "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/circuit.svg')",
+      }}
+      className="border-b border-gray-200 content"
+    >
       <div className="container">
         <div className="flex flex-col gap-4 lg:flex-row justify-between min-h-[calc(70dvh)] lg:pt-20">
           <motion.div
@@ -40,14 +47,9 @@ const Hero = () => {
                 animate="wave"
               />
             </motion.p>
-
-            <motion.h1
-              className="text-4xl font-bold text-gray-800"
-              variants={itemVariants}
-            >
-              Fullstack Engineer (ex-CTO)
-            </motion.h1>
-
+            <div className="text-5xl overflow-hidden font-bold text-gray-800 relative py-2">
+              <RotateWords />
+            </div>
             <motion.h2
               className="text-balance text-2xl text-gray-500"
               variants={itemVariants}
