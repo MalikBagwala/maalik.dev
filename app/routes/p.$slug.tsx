@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { Outlet, useLoaderData, useNavigate } from "@remix-run/react";
 import SpringModal from "~/components/ProjectModal/ProjectModal";
 import { contentfulClient } from "~/services/contentful";
 import { ProjectSkeleton } from "~/types/models";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 // Custom renderer for rich text
 const renderOptions = {
   renderNode: {
@@ -58,6 +58,35 @@ export async function loader({ params }: { params: { slug: string } }) {
   };
 }
 
+export const meta = ({ data }: any) => {
+  if (!data) {
+    return {
+      title: "Project Not Found - My Portfolio",
+      description: "The project you are looking for does not exist.",
+    };
+  }
+
+  return {
+    title: `${data.title} - My Portfolio`,
+    description: `Learn more about the project ${
+      data.title
+    }, built using ${data.technologies.join(
+      ", "
+    )}. Discover its features, source code, and live demo.`,
+    "og:title": `${data.title} - My Portfolio`,
+    "og:description": `Explore the details of ${
+      data.title
+    }, a project utilizing ${data.technologies.join(", ")}.`,
+    "og:image": data.thumbnail || "",
+    "og:url": `https://yourdomain.com/projects/${data.slug}`,
+    "twitter:card": "summary_large_image",
+    "twitter:title": `${data.title} - My Portfolio`,
+    "twitter:description": `Discover ${
+      data.title
+    }, developed with ${data.technologies.join(", ")}.`,
+    "twitter:image": data.thumbnail || "",
+  };
+};
 export default function ProjectDetail() {
   const navigate = useNavigate();
   const remoteProjectData = useLoaderData<typeof loader>();
