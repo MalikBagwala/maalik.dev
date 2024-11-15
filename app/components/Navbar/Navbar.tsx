@@ -21,16 +21,17 @@ const Navbar = ({ links }: NavBarType) => {
     setActiveHash(hash);
   }, [hash]);
 
+  console.log(activeHash);
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-lg backdrop-saturate-150 border-gray-200 border-b z-10">
+    <nav className="fixed lg:top-[1rem] left-1/2 transform -translate-x-1/2 backdrop-blur-lg border-gray-50/60 backdrop-contrast-120 border shadow-lg lg:rounded-full w-full lg:container z-10 !px-0">
       <div className="container py-4">
         <div className="flex text-lg justify-center items-center">
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">
             <img src="/logo.webp" height={30} width={30} alt="Logo" />
             <Link to={"/"}>
-              <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-700 font-bold">
+              <motion.h1 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-700 font-bold">
                 maalik.dev
-              </h1>
+              </motion.h1>
             </Link>
           </div>
           <div className="visible md:hidden flex justify-center items-center">
@@ -39,6 +40,7 @@ const Navbar = ({ links }: NavBarType) => {
           <div className="hidden md:flex gap-6">
             {links.map((link) => {
               const isActive = link.to === activeHash;
+              console.log(isActive);
               return (
                 <NavLink
                   key={link.to}
@@ -51,23 +53,12 @@ const Navbar = ({ links }: NavBarType) => {
                       color: resolvedConfig.theme.colors.blue[600],
                     }}
                     className={twMerge(
-                      "transition-colors ease-out",
-                      isActive ? "text-blue-600" : "text-gray-700"
+                      "transition-colors ease-out font-bold",
+                      isActive ? "!text-blue-600" : "text-gray-600"
                     )}
                   >
                     {link.name}
                   </motion.span>
-                  <motion.div
-                    className="absolute left-0 bottom-0 h-[2px] w-full bg-blue-600 origin-left"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: isActive ? 1 : 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{
-                      type: "tween",
-                      ease: "easeOut",
-                      duration: 0.5,
-                    }}
-                  />
                 </NavLink>
               );
             })}
