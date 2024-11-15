@@ -22,7 +22,7 @@ const Hero = () => {
     <section
       style={{
         background:
-          "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/public/circuit.svg')",
+          "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/circuit.svg')",
       }}
       className="border-b border-gray-200 content"
     >
