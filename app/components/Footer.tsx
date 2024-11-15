@@ -36,13 +36,17 @@ const AnimatedSocialIcon = ({ children, link, isFirst, isLast }: any) => {
     <motion.a
       href={link}
       target="__blank"
-      whileHover={{
-        rotate: "360deg",
-        scale: 2,
-        marginLeft: isFirst ? 0 : "12px",
-        marginRight: isLast ? 0 : "12px",
+      whileHover={"pop"}
+      whileFocus={"pop"}
+      variants={{
+        ...itemVariants,
+        pop: {
+          rotate: "360deg",
+          scale: 2,
+          marginLeft: isFirst ? 0 : "12px",
+          marginRight: isLast ? 0 : "12px",
+        },
       }}
-      variants={itemVariants}
       className="transition-colors hover:fill-blue-500"
     >
       {children}
