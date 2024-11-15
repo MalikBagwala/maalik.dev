@@ -9,6 +9,7 @@ import {
   itemVariants,
 } from "./Hero.animations";
 import { Link } from "@remix-run/react";
+import RotateWords from "../RotateWords/RotateWords";
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -40,14 +41,9 @@ const Hero = () => {
                 animate="wave"
               />
             </motion.p>
-
-            <motion.h1
-              className="text-4xl font-bold text-gray-800"
-              variants={itemVariants}
-            >
-              Fullstack Engineer (ex-CTO)
-            </motion.h1>
-
+            <div className="text-5xl overflow-hidden font-bold text-gray-800 relative py-2">
+              <RotateWords />
+            </div>
             <motion.h2
               className="text-balance text-2xl text-gray-500"
               variants={itemVariants}
