@@ -31,7 +31,7 @@ const MobileMenu = ({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="flex justify-center items-center fixed bg-white w-full top-[63px] h-[calc(100dvh-63px)] left-0 p-4 text-gray-600 z-10"
+            className="flex justify-center items-center fixed bg-white w-full top-[44px] h-[calc(100dvh-44px)] left-0 p-4 text-gray-600 z-10"
             initial={{ opacity: 0, x: "100vw" }} // Start with opacity 0 and slide in from the right
             animate={{ opacity: 1, x: 0 }} // Fade in and slide down
             exit={{ opacity: 0, x: "100vw" }} // Fade out and slide back to the right
