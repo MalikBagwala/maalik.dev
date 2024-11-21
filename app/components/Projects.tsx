@@ -9,6 +9,7 @@ export type ProjectType = {
   technologies: string[];
   slug: string;
   body?: string;
+  isFeatured: boolean;
 };
 
 export type ProjectsType = {
@@ -26,6 +27,7 @@ const Projects = ({ projects }: ProjectsType) => {
     >
       {projects.map((project) => (
         <Project
+          isFeatured={project.isFeatured}
           key={project.title}
           title={project.title}
           description={project.description}

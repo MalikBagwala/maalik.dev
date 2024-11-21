@@ -74,6 +74,7 @@ export async function loader() {
         slug: fields.slug,
         description: fields.description,
         thumbnail: (fields.thumbnail as any)?.fields?.file?.url,
+        isFeatured: fields.isFeatured,
       };
     }),
     total: response.total,
