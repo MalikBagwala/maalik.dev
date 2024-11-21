@@ -11,10 +11,11 @@ type ProjectProps = {
   sourceCodeLink: string;
   technologies: string[];
   slug: string;
+  isFeatured: boolean;
 };
 
 const Project = (project: ProjectProps) => {
-  const { title, description, thumbnail, slug } = project;
+  const { title, description, thumbnail, slug, isFeatured } = project;
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -23,8 +24,15 @@ const Project = (project: ProjectProps) => {
       ref={ref}
       initial={{ opacity: 0, translateY: 100 }}
       animate={inView ? { opacity: 1, translateY: 0 } : undefined}
-      className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white overflow-hidden"
+      className="relative rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white overflow-hidden"
     >
+      {/* Featured Tag */}
+      {isFeatured && (
+        <div className="z-[1] absolute top-0 right-0 bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-bl shadow-lg">
+          Professional
+        </div>
+      )}
+
       <div className="relative group">
         <Link
           className="h-96 cursor-pointer overflow-hidden relative"
