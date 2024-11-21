@@ -1,7 +1,8 @@
 import { Link } from "@remix-run/react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Github from "~/icons/Github";
+import ArrowRight from "~/icons/ArrowRight";
+
 type ProjectProps = {
   title: string;
   description: string;
@@ -13,8 +14,7 @@ type ProjectProps = {
 };
 
 const Project = (project: ProjectProps) => {
-  const { title, description, thumbnail, liveLink, sourceCodeLink, slug } =
-    project;
+  const { title, description, thumbnail, slug } = project;
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -25,7 +25,7 @@ const Project = (project: ProjectProps) => {
       animate={inView ? { opacity: 1, translateY: 0 } : undefined}
       className="rounded-lg border mb-10 last:mb-0 shadow-lg text-gray-700 bg-white overflow-hidden"
     >
-      <div className="relative">
+      <div className="relative group">
         <Link
           className="h-96 cursor-pointer overflow-hidden relative"
           preventScrollReset
@@ -40,26 +40,26 @@ const Project = (project: ProjectProps) => {
               alt={`${title} thumbnail`}
               className="w-full h-full object-cover transition-transform duration-300"
             />
+            <div
+              style={{
+                backdropFilter: "saturate(180%) blur(10px)",
+                background: "rgba(22, 22, 23, .6)",
+                color: "#fffc",
+              }}
+              className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            >
+              <div className="flex items-center gap-1">
+                <p className="text-white text-lg">View Project</p>
+                <ArrowRight />
+              </div>
+            </div>
           </div>
         </Link>
-        <a
-          href={liveLink || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute top-4 left-4 uppercase text-xl lg:text-2xl font-bold tracking-wider text-white backdrop-blur-md backdrop-saturate-100 backdrop-brightness-[0.7] hover:backdrop-brightness-[0.4] px-2 rounded-full transition duration-200 transform hover:scale-105"
-        >
-          {title}
-        </a>
-        <a
-          href={sourceCodeLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute top-4 right-4 text-white backdrop-blur-md backdrop-saturate-100 backdrop-brightness-[0.8] rounded-full flex justify-center items-center min-w-[32px] transition duration-200 transform hover:rotate-180 p-1"
-        >
-          <Github fill="white" height={24} />
-        </a>
       </div>
       <div className="p-4">
+        <p className="text-gray-800 text-xl lg:text-2xl font-bold tracking-wider mb-2">
+          {title}
+        </p>
         <article
           className="prose leading-relaxed text-lg"
           dangerouslySetInnerHTML={{ __html: description }}

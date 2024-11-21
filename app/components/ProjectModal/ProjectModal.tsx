@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { ProjectType } from "../Projects";
+import Github from "~/icons/Github";
 
 type SpringModalType = {
   isOpen: boolean;
@@ -111,7 +112,35 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
               dangerouslySetInnerHTML={{ __html: project.body || "" }}
               className="prose mt-6"
             ></div>
-            <footer></footer>
+            {(project.liveLink || project.sourceCodeLink) && (
+              <footer className="mt-4 flex gap-4">
+                {project.liveLink && (
+                  <motion.a
+                    whileHover={{
+                      translateY: -2,
+                    }}
+                    target="__blank"
+                    href={project.liveLink}
+                    className="px-4 py-2 rounded-md border text-blue-600 text-lg w-fit"
+                  >
+                    Visit
+                  </motion.a>
+                )}
+                {project.sourceCodeLink && (
+                  <motion.a
+                    whileHover={{
+                      translateY: -2,
+                    }}
+                    target="__blank"
+                    href={project.sourceCodeLink}
+                    className="px-4 py-2 rounded-md border text-blue-600 text-lg flex items-center gap-1 w-fit"
+                  >
+                    <Github fill="currentColor" height={24} />{" "}
+                    <span>Source Code</span>
+                  </motion.a>
+                )}
+              </footer>
+            )}
           </motion.div>
         </motion.div>
       )}
