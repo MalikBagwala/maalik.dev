@@ -3,6 +3,7 @@ import { useRef } from "react";
 import Button from "~/components/Button";
 import Section from "~/components/Section/Section";
 import { containerVariants, itemVariants } from "../Hero/Hero.animations";
+import Pulse from "../Pulse/Pulse";
 const Contact = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
@@ -26,7 +27,7 @@ const Contact = () => {
             variants={itemVariants}
             className="text-xl lg:text-2xl text-blue-500"
           >
-            <span className="pulse" /> I’m currently available for work.
+            <Pulse /> I’m currently available for work.
           </motion.p>
           <motion.div variants={itemVariants}>
             <Button className="w-fit">Send a message</Button>

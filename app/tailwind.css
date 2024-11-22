@@ -14,56 +14,6 @@
   @apply pt-[calc(62px+2rem)] pb-8;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 98, 255, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(0, 98, 255, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 98, 255, 0);
-  }
-}
-
-.pulse {
-  tab-size: 4;
-  -webkit-font-smoothing: antialiased;
-  word-spacing: 1px;
-  -webkit-text-size-adjust: 100%;
-  font-family: inherit;
-  text-align: left;
-  --tw-text-opacity: 1;
-  color: rgba(0, 98, 255, var(--tw-text-opacity));
-  font-size: 1.5rem;
-  line-height: 2rem;
-  visibility: visible;
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
-  --tw-border-opacity: 1;
-  border-color: rgba(229, 231, 235, var(--tw-border-opacity));
-  --tw-shadow: 0 0 #0000;
-  --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
-  --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
-  --tw-ring-color: rgba(59, 130, 246, 0.5);
-  --tw-ring-offset-shadow: 0 0 #0000;
-  --tw-ring-shadow: 0 0 #0000;
-  --tw-bg-opacity: 1;
-  background-color: rgba(0, 98, 255, var(--tw-bg-opacity));
-  display: inline-block;
-  vertical-align: middle;
-  margin-bottom: 3px;
-  margin-right: 6px;
-  border-radius: 50%;
-  background-clip: padding-box;
-  box-shadow: 0 0 0 rgba(0, 98, 255, 0.4);
-  animation: pulse 2s infinite;
-  width: 10px;
-  height: 10px;
-}
-
 .social {
   @apply fill-[rgba(0,8,61,0.7)] hover:fill-blue-500;
 }
