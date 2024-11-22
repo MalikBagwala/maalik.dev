@@ -25,7 +25,7 @@ const Contact = () => {
           </motion.p>
           <motion.p
             variants={itemVariants}
-            className="text-xl lg:text-2xl text-primary-500"
+            className="text-xl lg:text-2xl text-primary"
           >
             <Pulse /> I’m currently available for work.
           </motion.p>
@@ -36,14 +36,14 @@ const Contact = () => {
         <div className="flex flex-col gap-2 text-2xl text-gray-500">
           <motion.a
             variants={itemVariants}
-            className="hover:text-primary-500"
+            className="hover:text-primary"
             href="tel:+919975130529"
           >
             +91 9975130529
           </motion.a>
           <motion.a
             variants={itemVariants}
-            className="hover:text-primary-500"
+            className="hover:text-primary"
             href="mailto:hello@maalik.dev"
           >
             hello@maalik.dev

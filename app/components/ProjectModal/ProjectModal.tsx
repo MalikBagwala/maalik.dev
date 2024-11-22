@@ -121,7 +121,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
                     }}
                     target="__blank"
                     href={project.liveLink}
-                    className="px-4 py-2 rounded-md border text-primary-600 text-lg w-fit"
+                    className="px-4 py-2 rounded-md border text-primary text-lg w-fit"
                   >
                     Visit
                   </motion.a>
@@ -133,7 +133,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
                     }}
                     target="__blank"
                     href={project.sourceCodeLink}
-                    className="px-4 py-2 rounded-md border text-primary-600 text-lg flex items-center gap-1 w-fit"
+                    className="px-4 py-2 rounded-md border text-primary text-lg flex items-center gap-1 w-fit"
                   >
                     <Github fill="currentColor" height={24} />{" "}
                     <span>Source Code</span>

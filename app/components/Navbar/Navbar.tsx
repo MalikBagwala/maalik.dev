@@ -35,7 +35,7 @@ const Navbar = ({ links }: NavBarType) => {
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">
             <img src="/logo.webp" height={24} width={24} alt="Logo" />
             <Link to={"/"}>
-              <motion.h1 className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-300 to-primary-400 font-bold">
+              <motion.h1 className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-light to-primary-light font-bold">
                 maalik.dev
               </motion.h1>
             </Link>
@@ -59,7 +59,7 @@ const Navbar = ({ links }: NavBarType) => {
                     }}
                     className={twMerge(
                       "transition-colors ease-out",
-                      isActive && "text-primary-300"
+                      isActive && "text-primary-light"
                     )}
                   >
                     {link.name}

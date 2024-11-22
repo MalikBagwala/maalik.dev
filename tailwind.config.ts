@@ -17,21 +17,17 @@ export default {
     extend: {
       colors: {
         primary: {
-          100: "hsl(var(--color-primary), 90%, <alpha-value>)",
-          200: "hsl(var(--color-primary), 85%, <alpha-value>)",
-          300: "hsl(var(--color-primary), 80%, <alpha-value>)",
-          400: "hsl(var(--color-primary), 70%, <alpha-value>)",
-          500: "hsl(var(--color-primary), 60%, <alpha-value>)",
+          light: "hsl(var(--color-primary), 85%, <alpha-value>)",
           DEFAULT: "hsl(var(--color-primary), 53%, <alpha-value>)",
-          700: "hsl(var(--color-primary), 45%, <alpha-value>)",
         },
         secondary: {
-          300: "hsl(var(--color-secondary), 47%, <alpha-value>)",
-          500: "hsl(var(--color-secondary), 40%, <alpha-value>)",
+          light: "hsl(var(--color-secondary), 55%, <alpha-value>)",
           DEFAULT: "hsl(var(--color-secondary), 32%, <alpha-value>)",
-          700: "hsl(var(--color-secondary), 27%, <alpha-value>)",
         },
-        accent: {},
+        accent: {
+          light: "hsl(var(--color-accent), 55%, <alpha-value>)",
+          DEFAULT: "hsl(var(--color-accent), 32%, <alpha-value>)",
+        },
         neutral: {},
         base: {},
       },

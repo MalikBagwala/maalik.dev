@@ -140,16 +140,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <main>
           <div className="content container">
             <div className="flex gap-x-10 bg-white">
-              <div className="w-20 h-20 bg-secondary-300"></div>
-              <div className="w-20 h-20 bg-secondary-500"></div>
+              <div className="w-20 h-20 bg-secondary-light"></div>
               <div className="w-20 h-20 bg-secondary"></div>
-              <div className="w-20 h-20 bg-secondary-700"></div>
+              <div className="w-20 h-20 bg-secondary"></div>
+              <div className="w-20 h-20 bg-secondary"></div>
             </div>
             <div className="flex gap-x-10 bg-white mt-4">
-              <div className="w-20 h-20 bg-secondary-300"></div>
-              <div className="w-20 h-20 bg-secondary-500"></div>
+              <div className="w-20 h-20 bg-secondary-light"></div>
               <div className="w-20 h-20 bg-secondary"></div>
-              <div className="w-20 h-20 bg-secondary-700"></div>
+              <div className="w-20 h-20 bg-secondary"></div>
+              <div className="w-20 h-20 bg-secondary"></div>
             </div>
           </div>
 
