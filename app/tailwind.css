@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 .custom-focus {
-  @apply focus-visible:outline-dashed focus-visible:outline-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2;
+  @apply focus-visible:outline-dashed focus-visible:outline-primary/40 focus-visible:outline-2 focus-visible:outline-offset-2;
 }
 ::selection {
   @apply bg-blue-100 text-blue-700;
@@ -21,3 +21,9 @@ html {
   @apply scroll-smooth;
 }
 @tailwind utilities;
+
+@layer base {
+  html[data-theme="light"] {
+    --color-primary: 37, 99, 235;
+  }
+}

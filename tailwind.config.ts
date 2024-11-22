@@ -13,12 +13,10 @@ export default {
       lg: "1024px",
       xl: "1172px",
     },
+    colors: {
+      primary: "rgb(var(--color-primary) / <alpha-value>)",
+    },
     extend: {
-      colors: {
-        gray: {
-          50: "rgb(243, 242, 239)",
-        },
-      },
       container: {
         center: true,
         padding: {
