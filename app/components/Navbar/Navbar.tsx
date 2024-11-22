@@ -31,7 +31,7 @@ const Navbar = ({ links }: NavBarType) => {
       className="fixed lg:top-[1rem] left-1/2 transform -translate-x-1/2 lg:rounded-full lg:min-w-sm z-10 !px-0 text-sm w-full lg:w-fit"
     >
       <div className="container px-4 p-2 lg:px-2">
-        <div className="flex justify-center items-center gap-x-8">
+        <div className="flex justify-center items-center gap-x-16">
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">
             <img src="/logo.webp" height={24} width={24} alt="Logo" />
             <Link to={"/"}>
