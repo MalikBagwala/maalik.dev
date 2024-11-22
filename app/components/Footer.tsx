@@ -67,7 +67,7 @@ const Footer = () => {
         animate={inView ? "show" : "hidden"}
         className="flex flex-col gap-8 lg:gap-0 text-center lg:flex-row justify-center lg:justify-between items-center lg:items-start"
       >
-        <motion.div className="flex flex-col text-gray-500 shrink-0 w-1/3">
+        <motion.div className="flex flex-col text-neutral-500 shrink-0 w-1/3">
           <motion.a
             variants={itemVariants}
             className="text-primary"
@@ -84,7 +84,7 @@ const Footer = () => {
           </motion.p>
         </motion.div>
 
-        <motion.div className="flex flex-col text-gray-500 shrink-0 w-1/3">
+        <motion.div className="flex flex-col text-neutral-500 shrink-0 w-1/3">
           <motion.a
             variants={itemVariants}
             className="text-primary"
@@ -98,7 +98,7 @@ const Footer = () => {
           </motion.p>
         </motion.div>
 
-        <motion.div className="flex justify-center text-gray-500 w-1/3">
+        <motion.div className="flex justify-center text-neutral-500 w-1/3">
           <motion.div
             initial={{ gap: "16px" }}
             className="flex fill-primary-light items-center"

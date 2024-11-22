@@ -18,8 +18,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Projects, { ProjectsType } from "./components/Projects";
 import Skills from "./components/Skills";
 import Testimonials, { TestimonialsType } from "./components/Testimonials";
-import { contentfulClient } from "./services/contentful";
 import "./index.css";
+import { contentfulClient } from "./services/contentful";
 import "./tailwind.css";
 import { ProjectSkeleton, TestimonialSkeleton } from "./types/models";
 
@@ -132,27 +132,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body
         className={twMerge(
-          "min-h-screen bg-white text-gray-700 overflow-x-hidden"
+          "min-h-screen bg-white text-neutral-700 overflow-x-hidden"
         )}
       >
         <Navbar links={LINKS} />
 
         <main>
-          <div className="content container">
-            <div className="flex gap-x-10 bg-white">
-              <div className="w-20 h-20 bg-secondary-light"></div>
-              <div className="w-20 h-20 bg-secondary"></div>
-              <div className="w-20 h-20 bg-secondary"></div>
-              <div className="w-20 h-20 bg-secondary"></div>
-            </div>
-            <div className="flex gap-x-10 bg-white mt-4">
-              <div className="w-20 h-20 bg-secondary-light"></div>
-              <div className="w-20 h-20 bg-secondary"></div>
-              <div className="w-20 h-20 bg-secondary"></div>
-              <div className="w-20 h-20 bg-secondary"></div>
-            </div>
-          </div>
-
           <Hero />
           <Projects {...projects} />
           <Skills />

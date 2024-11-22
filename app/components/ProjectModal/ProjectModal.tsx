@@ -68,13 +68,13 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
             className={twMerge(
               "absolute top-12 lg:top-24 bottom-0 left-1/2 h-[calc(100dvh-3rem)] lg:h-[calc(100dvh-7rem)] overflow-y-auto",
               "w-full max-w-full lg:max-w-4xl",
-              "bg-white text-gray-600 border-t lg:border border-gray-300 p-6 rounded-t-lg lg:rounded-b-lg shadow-xl cursor-default"
+              "bg-white text-neutral-600 border-t lg:border border-neutral-300 p-6 rounded-t-lg lg:rounded-b-lg shadow-xl cursor-default"
             )}
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 h-8 w-8 flex items-center justify-center border rounded-full text-gray-600 hover:bg-gray-100"
+              className="absolute top-4 right-4 h-8 w-8 flex items-center justify-center border rounded-full text-neutral-600 hover:bg-neutral-100"
               aria-label="Close"
             >
               ✕
@@ -88,7 +88,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
                 alt=""
               />
               <div className="flex flex-col gap-y-2">
-                <h1 className="font-bold text-lg text-gray-800">
+                <h1 className="font-bold text-lg text-neutral-800">
                   {project.title}
                 </h1>
                 <p>{project.description}</p>
@@ -101,7 +101,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-4 py-2 rounded-md border text-gray-800"
+                    className="px-4 py-2 rounded-md border text-neutral-800"
                   >
                     {tech}
                   </span>

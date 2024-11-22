@@ -100,7 +100,7 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
         alt={""}
         width={"auto"}
       />
-      <p className="font-bold text-gray-800">{skill.name}</p>
+      <p className="font-bold text-neutral-800">{skill.name}</p>
     </motion.li>
   );
 };

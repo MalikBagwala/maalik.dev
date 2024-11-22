@@ -20,17 +20,17 @@ const HamburgerButton = ({ isOpen, setOpen }: HamburgerButtonProps) => {
       >
         <motion.span
           variants={VARIANTS.top}
-          className="absolute h-0.5 w-6 bg-gray-100"
+          className="absolute h-0.5 w-6 bg-neutral-100"
           style={{ y: "-50%", left: "50%", x: "-50%", top: "30%" }}
         />
         <motion.span
           variants={VARIANTS.middle}
-          className="absolute h-0.5 w-6 bg-gray-100"
+          className="absolute h-0.5 w-6 bg-neutral-100"
           style={{ left: "50%", x: "-50%", top: "50%", y: "-50%" }}
         />
         <motion.span
           variants={VARIANTS.bottom}
-          className="absolute h-0.5 w-4 bg-gray-100"
+          className="absolute h-0.5 w-4 bg-neutral-100"
           style={{
             x: "-50%",
             y: "50%",

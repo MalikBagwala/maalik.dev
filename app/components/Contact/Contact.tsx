@@ -19,7 +19,7 @@ const Contact = () => {
         <div className="flex flex-col gap-4 lg:gap-6">
           <motion.p
             variants={itemVariants}
-            className="text-3xl lg:text-4xl text-gray-800 font-bold"
+            className="text-3xl lg:text-4xl text-neutral-800 font-bold"
           >
             In need of a developer?
           </motion.p>
@@ -33,7 +33,7 @@ const Contact = () => {
             <Button className="w-fit">Send a message</Button>
           </motion.div>
         </div>
-        <div className="flex flex-col gap-2 text-2xl text-gray-500">
+        <div className="flex flex-col gap-2 text-2xl text-neutral-500">
           <motion.a
             variants={itemVariants}
             className="hover:text-primary"

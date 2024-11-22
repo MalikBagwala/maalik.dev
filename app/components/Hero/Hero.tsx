@@ -24,7 +24,7 @@ const Hero = () => {
         background:
           "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/circuit.svg')",
       }}
-      className="border-b border-gray-200 content"
+      className="border-b border-neutral-200 content"
     >
       <div className="container">
         <div className="flex flex-col gap-4 lg:flex-row justify-between min-h-[calc(70dvh)] lg:pt-20">
@@ -35,7 +35,7 @@ const Hero = () => {
             animate={isMounted ? "show" : "hidden"}
           >
             <motion.p
-              className="flex text-2xl gap-2 text-gray-500"
+              className="flex text-2xl gap-2 text-neutral-500"
               variants={itemVariants}
             >
               <span>Hi there, I&apos;m Malik</span>
@@ -47,11 +47,11 @@ const Hero = () => {
                 animate="wave"
               />
             </motion.p>
-            <div className="text-5xl overflow-hidden font-bold text-gray-800 relative py-2">
+            <div className="text-5xl overflow-hidden font-bold text-neutral-800 relative py-2">
               <RotateWords />
             </div>
             <motion.h2
-              className="text-balance text-2xl text-gray-500"
+              className="text-balance text-2xl text-neutral-500"
               variants={itemVariants}
             >
               I help people and brands reach their business goals by designing &
