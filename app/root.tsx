@@ -113,6 +113,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       render: testimonials.total ? true : false,
     },
     { to: "#contact", name: "Contact" },
+    { to: "#why-me", name: "Why Me?", render: false },
   ].filter((l) => l.render !== false);
 
   return (
