@@ -13,10 +13,23 @@ export default {
       lg: "1024px",
       xl: "1172px",
     },
-    colors: {
-      primary: "rgb(var(--color-primary) / <alpha-value>)",
-    },
+
     extend: {
+      colors: {
+        primary: {
+          100: "hsl(var(--color-primary), 90%, <alpha-value>)",
+          200: "hsl(var(--color-primary), 85%, <alpha-value>)",
+          300: "hsl(var(--color-primary), 80%, <alpha-value>)",
+          400: "hsl(var(--color-primary), 70%, <alpha-value>)",
+          500: "hsl(var(--color-primary), 60%, <alpha-value>)",
+          DEFAULT: "hsl(var(--color-primary), 53%, <alpha-value>)",
+          700: "hsl(var(--color-primary), 45%, <alpha-value>)",
+        },
+        secondary: {},
+        accent: {},
+        neutral: {},
+        base: {},
+      },
       container: {
         center: true,
         padding: {

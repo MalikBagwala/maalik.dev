@@ -19,6 +19,7 @@ import Projects, { ProjectsType } from "./components/Projects";
 import Skills from "./components/Skills";
 import Testimonials, { TestimonialsType } from "./components/Testimonials";
 import { contentfulClient } from "./services/contentful";
+import "./index.css";
 import "./tailwind.css";
 import { ProjectSkeleton, TestimonialSkeleton } from "./types/models";
 
@@ -135,7 +136,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
         )}
       >
         <Navbar links={LINKS} />
+
         <main>
+          <div className="content container">
+            <div className="flex gap-x-10 bg-white">
+              <div className="w-20 h-20 bg-primary-100"></div>
+              <div className="w-20 h-20 bg-primary-300"></div>
+              <div className="w-20 h-20 bg-primary-400"></div>
+              <div className="w-20 h-20 bg-primary-500"></div>
+              <div className="w-20 h-20 bg-primary-600"></div>
+              <div className="w-20 h-20 bg-primary-700"></div>
+            </div>
+            <div className="flex gap-x-10 bg-white mt-4">
+              <div className="w-20 h-20 bg-primary-100"></div>
+              <div className="w-20 h-20 bg-primary-300"></div>
+              <div className="w-20 h-20 bg-primary-400"></div>
+              <div className="w-20 h-20 bg-primary-500"></div>
+              <div className="w-20 h-20 bg-primary"></div>
+              <div className="w-20 h-20 bg-primary-700"></div>
+            </div>
+          </div>
+
           <Hero />
           <Projects {...projects} />
           <Skills />

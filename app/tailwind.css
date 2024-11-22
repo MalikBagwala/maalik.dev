@@ -4,7 +4,7 @@
   @apply focus-visible:outline-dashed focus-visible:outline-primary/40 focus-visible:outline-2 focus-visible:outline-offset-2;
 }
 ::selection {
-  @apply bg-blue-100 text-blue-700;
+  @apply bg-primary-100 text-primary-700;
 }
 * {
   @apply custom-focus;
@@ -13,17 +13,7 @@
 .content {
   @apply pt-[calc(62px+2rem)] pb-8;
 }
-
-.social {
-  @apply fill-[rgba(0,8,61,0.7)] hover:fill-blue-500;
-}
-html {
+:root {
   @apply scroll-smooth;
 }
 @tailwind utilities;
-
-@layer base {
-  html[data-theme="light"] {
-    --color-primary: 37, 99, 235;
-  }
-}

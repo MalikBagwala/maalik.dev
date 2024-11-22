@@ -47,7 +47,7 @@ const AnimatedSocialIcon = ({ children, link, isFirst, isLast }: any) => {
           marginRight: isLast ? 0 : "12px",
         },
       }}
-      className="transition-colors hover:fill-blue-500"
+      className="transition-colors hover:fill-primary-500"
     >
       {children}
     </motion.a>
@@ -70,7 +70,7 @@ const Footer = () => {
         <motion.div className="flex flex-col text-gray-500 shrink-0 w-1/3">
           <motion.a
             variants={itemVariants}
-            className="text-blue-500"
+            className="text-primary-500"
             href="https://maalik.dev"
             target="__blank"
           >
@@ -87,7 +87,7 @@ const Footer = () => {
         <motion.div className="flex flex-col text-gray-500 shrink-0 w-1/3">
           <motion.a
             variants={itemVariants}
-            className="text-blue-500"
+            className="text-primary-500"
             href="https://maalik.dev"
             target="__blank"
           >
@@ -101,7 +101,7 @@ const Footer = () => {
         <motion.div className="flex justify-center text-gray-500 w-1/3">
           <motion.div
             initial={{ gap: "16px" }}
-            className="flex fill-blue-300 items-center"
+            className="flex fill-primary-300 items-center"
           >
             {SOCIALS.map((social, index) => (
               <AnimatedSocialIcon
