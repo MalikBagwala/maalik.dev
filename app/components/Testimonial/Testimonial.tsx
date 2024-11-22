@@ -45,7 +45,7 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
         className={twMerge(
           "rounded-xl px-6 py-8 flex flex-col justify-between text-gray-500 h-fit bg-white relative",
           isHighlight &&
-            "bg-gradient-to-r from-teal-600 to-primary-600 text-gray-50"
+            "bg-gradient-to-r from-secondary to-primary-600 text-gray-50"
         )}
       >
         <blockquote

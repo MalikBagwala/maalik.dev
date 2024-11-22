@@ -67,7 +67,7 @@ const Hero = () => {
                 View my work
               </Button>
               <a
-                className="text-lg font-semibold text-teal-700"
+                className="text-lg font-semibold text-secondary-700"
                 href={SOCIALS[0].link}
                 target="__blank"
               >
