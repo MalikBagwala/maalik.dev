@@ -3,6 +3,7 @@ import { useRef } from "react";
 import Button from "~/components/Button";
 import Section from "~/components/Section/Section";
 import { containerVariants, itemVariants } from "../Hero/Hero.animations";
+import Pulse from "../Pulse/Pulse";
 const Contact = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
@@ -18,31 +19,31 @@ const Contact = () => {
         <div className="flex flex-col gap-4 lg:gap-6">
           <motion.p
             variants={itemVariants}
-            className="text-3xl lg:text-4xl text-gray-800 font-bold"
+            className="text-3xl lg:text-4xl text-neutral-800 font-bold"
           >
             In need of a developer?
           </motion.p>
           <motion.p
             variants={itemVariants}
-            className="text-xl lg:text-2xl text-blue-500"
+            className="text-xl lg:text-2xl text-primary"
           >
-            <span className="pulse" /> I’m currently available for work.
+            <Pulse /> I’m currently available for work.
           </motion.p>
           <motion.div variants={itemVariants}>
             <Button className="w-fit">Send a message</Button>
           </motion.div>
         </div>
-        <div className="flex flex-col gap-2 text-2xl text-gray-500">
+        <div className="flex flex-col gap-2 text-2xl text-neutral-500">
           <motion.a
             variants={itemVariants}
-            className="hover:text-blue-500"
+            className="hover:text-primary"
             href="tel:+919975130529"
           >
             +91 9975130529
           </motion.a>
           <motion.a
             variants={itemVariants}
-            className="hover:text-blue-500"
+            className="hover:text-primary"
             href="mailto:hello@maalik.dev"
           >
             hello@maalik.dev

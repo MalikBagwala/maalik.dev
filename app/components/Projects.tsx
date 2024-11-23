@@ -19,7 +19,7 @@ const Projects = ({ projects }: ProjectsType) => {
   if (!projects.length) return null;
   return (
     <Section
-      className="bg-gray-50"
+      className="bg-neutral-50"
       id="projects"
       title="Projects"
       subtitle="Prototypes, Digital Products (Apps, Websites, SaaS solutions) and design systems which are visually pleasing, user-centric and easy to use."

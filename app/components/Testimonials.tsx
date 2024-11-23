@@ -17,7 +17,7 @@ const Testimonials = ({ testimonials }: TestimonialsType) => {
   if (!testimonials.length) return null;
   return (
     <Section
-      className="bg-gray-50"
+      className="bg-neutral-50"
       id="testimonials"
       title="Testimonials"
       subtitle="Hear from our clients about their experiences and success stories."

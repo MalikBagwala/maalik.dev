@@ -18,6 +18,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Projects, { ProjectsType } from "./components/Projects";
 import Skills from "./components/Skills";
 import Testimonials, { TestimonialsType } from "./components/Testimonials";
+import "./index.css";
 import { contentfulClient } from "./services/contentful";
 import "./tailwind.css";
 import { ProjectSkeleton, TestimonialSkeleton } from "./types/models";
@@ -113,10 +114,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       render: testimonials.total ? true : false,
     },
     { to: "#contact", name: "Contact" },
+    { to: "#why-me", name: "Why Me?", render: false },
   ].filter((l) => l.render !== false);
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -130,10 +132,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body
         className={twMerge(
-          "min-h-screen bg-white text-gray-700 overflow-x-hidden"
+          "min-h-screen bg-white text-neutral-700 overflow-x-hidden"
         )}
       >
         <Navbar links={LINKS} />
+
         <main>
           <Hero />
           <Projects {...projects} />

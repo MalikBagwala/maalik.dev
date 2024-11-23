@@ -23,16 +23,18 @@ const Section = ({
       id={id}
       {...props}
       className={twMerge(
-        "py-24 border-b border-gray-200 last-of-type:border-none",
+        "py-24 border-b border-neutral-200 last-of-type:border-none",
         className
       )}
     >
       <div className={twMerge("container", containerClassName)}>
         {title && (
           <header className="w-full text-center flex flex-col gap-y-2 mb-10">
-            <h2 className="text-4xl font-bold text-gray-800">{title}</h2>
+            <h2 className="text-4xl font-bold text-neutral-800">{title}</h2>
             {subtitle && (
-              <p className="text-2xl text-gray-500 text-balance">{subtitle}</p>
+              <p className="text-2xl text-neutral-500 text-balance">
+                {subtitle}
+              </p>
             )}
           </header>
         )}

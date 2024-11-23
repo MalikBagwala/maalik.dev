@@ -43,9 +43,9 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
           boxShadow: "0 2px 4px 0 rgba(14, 30, 37, 0.12)",
         }}
         className={twMerge(
-          "rounded-xl px-6 py-8 flex flex-col justify-between text-gray-500 h-fit bg-white relative",
+          "rounded-xl px-6 py-8 flex flex-col justify-between text-neutral-500 h-fit bg-white relative",
           isHighlight &&
-            "bg-gradient-to-r from-teal-600 to-blue-600 text-gray-50"
+            "bg-gradient-to-r from-secondary to-primary text-neutral-50"
         )}
       >
         <blockquote
@@ -64,7 +64,7 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
           <div>
             <h6
               className={twMerge(
-                "text-gray-800 font-bold",
+                "text-neutral-800 font-bold",
                 isHighlight && "text-white"
               )}
             >
@@ -76,19 +76,19 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
         {isHighlight && (
           <>
             <Star
-              className="absolute top-6 -left-[12px] fill-amber-400"
+              className="absolute top-6 -left-[12px] fill-accent"
               height={30}
             />
             <Star
-              className="absolute -top-2 left-8 fill-gray-700"
+              className="absolute -top-2 left-8 fill-neutral-700"
               height={20}
             />
             <Star
-              className="absolute top-6 -right-[12px] fill-amber-400"
+              className="absolute top-6 -right-[12px] fill-accent"
               height={12}
             />
             <Star
-              className="absolute -bottom-5 right-12 fill-gray-700"
+              className="absolute -bottom-5 right-12 fill-neutral-700"
               height={40}
             />
           </>
