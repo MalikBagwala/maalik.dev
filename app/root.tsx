@@ -11,9 +11,9 @@ import {
 
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { twMerge } from "tailwind-merge";
+import Brands, { BrandsType } from "./components/Brands/Brands";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
 import Projects, { ProjectsType } from "./components/Projects";
 import Skills from "./components/Skills";
@@ -21,7 +21,12 @@ import Testimonials, { TestimonialsType } from "./components/Testimonials";
 import "./index.css";
 import { contentfulClient } from "./services/contentful";
 import "./tailwind.css";
-import { ProjectSkeleton, TestimonialSkeleton } from "./types/models";
+import {
+  BrandSkeleton,
+  ProjectSkeleton,
+  TestimonialSkeleton,
+} from "./types/models";
+import Hero from "./components/Hero/Hero";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -65,6 +70,10 @@ export async function loader() {
     content_type: "testimonials",
     order: ["-fields.weight", "fields.isHighlighted"],
   });
+  const bResponse = await contentfulClient.getEntries<BrandSkeleton>({
+    content_type: "brands",
+    order: ["-fields.weight"],
+  });
   const projects: ProjectsType & { total: number } = {
     projects: response.items.map(({ fields }) => {
       return {
@@ -94,14 +103,29 @@ export async function loader() {
     }),
     total: tResponse.total,
   };
+
+  const brands: BrandsType = {
+    brands: bResponse.items.map((item) => {
+      return {
+        id: item.sys.id,
+        name: item.fields.name,
+        isEmployer: item.fields.isEmployer,
+        weight: item.fields.weight,
+        url: item.fields.url,
+        logo: (item.fields.logo as any)?.fields?.file?.url,
+      };
+    }),
+    total: bResponse.total,
+  };
   return {
     projects,
     testimonials,
+    brands,
   };
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { projects, testimonials } = useLoaderData<typeof loader>();
+  const { projects, testimonials, brands } = useLoaderData<typeof loader>();
   const LINKS = [
     {
       to: "#projects",
@@ -140,6 +164,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         <main>
           <Hero />
+          <Brands {...brands} />
           <Projects {...projects} />
           <Skills />
           <Testimonials {...testimonials} />

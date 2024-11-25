@@ -34,3 +34,14 @@ export type TestimonialSkeleton = {
     content: EntryFieldTypes.RichText;
   };
 };
+
+export type BrandSkeleton = {
+  contentTypeId: "brands";
+  fields: {
+    weight: EntryFieldTypes.Number;
+    name: EntryFieldTypes.Text;
+    url: EntryFieldTypes.Text;
+    logo: EntryFieldTypes.AssetLink;
+    isEmployer: EntryFieldTypes.Boolean;
+  };
+};

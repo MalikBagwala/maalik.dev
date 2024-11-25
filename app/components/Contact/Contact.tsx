@@ -46,10 +46,13 @@ const Contact = () => {
             >
               <WhatsApp className="size-8" /> <span>+91 9975130529</span>
             </motion.a>
-            <span className="text-sm text-neutral-500">
+            <motion.span
+              variants={itemVariants}
+              className="text-sm text-neutral-500"
+            >
               Also available on{" "}
               <span className="text-neutral-700">facetime</span>
-            </span>
+            </motion.span>
           </div>
           <motion.a
             variants={itemVariants}
