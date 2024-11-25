@@ -20,9 +20,13 @@ const Hero = () => {
 
   return (
     <section
+      // style={{
+      //   background:
+      //     "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/circuit.svg')",
+      // }}
       style={{
         background:
-          "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/circuit.svg')",
+          "linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%), url('/circuit.svg')",
       }}
       className="content"
     >

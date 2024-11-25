@@ -110,7 +110,7 @@ const Skills = () => {
     <Section
       id="skills"
       title="Skills"
-      subtitle="For those who know what they’re looking for.."
+      subtitle="For those who know what they’re looking for."
     >
       <ul className="flex flex-wrap justify-center overflow-hidden">
         {SKILLS.map((skill, index) => (
