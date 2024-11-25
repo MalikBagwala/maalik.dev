@@ -20,7 +20,6 @@ const Navbar = ({ links }: NavBarType) => {
     setActiveHash(hash);
   }, [hash]);
 
-  console.log(activeHash);
   return (
     <nav
       style={{
@@ -46,7 +45,6 @@ const Navbar = ({ links }: NavBarType) => {
           <div className="hidden md:flex gap-6 mr-2">
             {links.map((link) => {
               const isActive = link.to === activeHash;
-              console.log(isActive);
               return (
                 <NavLink
                   key={link.to}
