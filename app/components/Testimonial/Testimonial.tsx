@@ -76,19 +76,16 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
         {isHighlight && (
           <>
             <Star
-              className="absolute top-6 -left-[12px] fill-accent"
+              className="absolute top-6 -left-[12px] fill-accent-light"
               height={30}
             />
+            <Star className="absolute -top-2 left-8 fill-accent" height={20} />
             <Star
-              className="absolute -top-2 left-8 fill-neutral-700"
-              height={20}
-            />
-            <Star
-              className="absolute top-6 -right-[12px] fill-accent"
+              className="absolute top-6 -right-[12px] fill-accent-light"
               height={12}
             />
             <Star
-              className="absolute -bottom-5 right-12 fill-neutral-700"
+              className="absolute -bottom-5 right-12 fill-accent"
               height={40}
             />
           </>

@@ -89,6 +89,7 @@ export async function loader() {
         comment: documentToHtmlString(item.fields.content),
         designation: item.fields.clientDesignation,
         name: item.fields.clientName,
+        highlighted: item.fields.isHighlighted,
       };
     }),
     total: tResponse.total,
