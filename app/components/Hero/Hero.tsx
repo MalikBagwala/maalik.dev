@@ -1,15 +1,15 @@
+import { Link } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Button from "~/components/Button";
 import { SOCIALS } from "../Footer";
+import RotateWords from "../RotateWords/RotateWords";
 import {
   containerVariants,
   handVariants,
   imageVariants,
   itemVariants,
 } from "./Hero.animations";
-import { Link } from "@remix-run/react";
-import RotateWords from "../RotateWords/RotateWords";
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -20,11 +20,15 @@ const Hero = () => {
 
   return (
     <section
+      // style={{
+      //   background:
+      //     "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/circuit.svg')",
+      // }}
       style={{
         background:
-          "linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url('/circuit.svg')",
+          "linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%), url('/circuit.svg')",
       }}
-      className="border-b border-neutral-200 content"
+      className="content"
     >
       <div className="container">
         <div className="flex flex-col gap-4 lg:flex-row justify-between min-h-[calc(70dvh)] lg:pt-20">

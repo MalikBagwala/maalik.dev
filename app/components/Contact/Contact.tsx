@@ -4,6 +4,7 @@ import Button from "~/components/Button";
 import Section from "~/components/Section/Section";
 import { containerVariants, itemVariants } from "../Hero/Hero.animations";
 import Pulse from "../Pulse/Pulse";
+import WhatsApp from "~/icons/WhatsApp";
 const Contact = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
@@ -30,20 +31,32 @@ const Contact = () => {
             <Pulse /> I’m currently available for work.
           </motion.p>
           <motion.div variants={itemVariants}>
-            <Button className="w-fit">Send a message</Button>
+            <Button as="a" href="https://wa.me/+919975130529" className="w-fit">
+              Send a message
+            </Button>
           </motion.div>
         </div>
-        <div className="flex flex-col gap-2 text-2xl text-neutral-500">
+        <div className="flex flex-col gap-4 text-2xl">
+          <div className="flex flex-col items-center">
+            <motion.a
+              whileHover={{ translateY: -4, scale: 1.05 }}
+              variants={itemVariants}
+              className="bg-[#25d366] text-white rounded-full py-2 px-4 flex justify-center items-center gap-2"
+              href="https://wa.me/+919975130529"
+            >
+              <WhatsApp className="size-8" /> <span>+91 9975130529</span>
+            </motion.a>
+            <motion.span
+              variants={itemVariants}
+              className="text-sm text-neutral-500"
+            >
+              Also available on{" "}
+              <span className="text-neutral-700">facetime</span>
+            </motion.span>
+          </div>
           <motion.a
             variants={itemVariants}
-            className="hover:text-primary"
-            href="tel:+919975130529"
-          >
-            +91 9975130529
-          </motion.a>
-          <motion.a
-            variants={itemVariants}
-            className="hover:text-primary"
+            className="text-neutral-500 hover:text-primary font-semibold transition-colors"
             href="mailto:hello@maalik.dev"
           >
             hello@maalik.dev

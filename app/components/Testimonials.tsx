@@ -7,6 +7,7 @@ export type TestimonialType = {
   avatar: string;
   designation: string;
   comment: string;
+  highlighted: boolean;
 };
 
 export type TestimonialsType = {
@@ -20,7 +21,7 @@ const Testimonials = ({ testimonials }: TestimonialsType) => {
       className="bg-neutral-50"
       id="testimonials"
       title="Testimonials"
-      subtitle="Hear from our clients about their experiences and success stories."
+      subtitle="Hear from our clients and colleagues about their experiences and success stories."
       containerClassName="p-0 overflow-hidden"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 lg:gap-y-10 gap-x-12 px-6 py-4 lg:px-4">
