@@ -163,9 +163,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         ></script>
       </head>
       <body
-        className={twMerge(
-          "min-h-screen bg-white text-neutral-700 overflow-x-hidden"
-        )}
+        className={twMerge("min-h-screen text-neutral-700 overflow-x-hidden")}
       >
         <Navbar links={LINKS} initialTheme={theme} />
         <main>
