@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import DarkToggle from "../DarkToggle/DarkToggle";
+import { UseThemeProps } from "~/hooks/useTheme";
 
 export type LinkType = {
   to: string;
   name: string;
 };
-export type NavBarType = {
+export type NavBarType = UseThemeProps & {
   links: LinkType[];
 };
 
-const Navbar = ({ links }: NavBarType) => {
+const Navbar = ({ links, initialTheme }: NavBarType) => {
   const { hash } = useLocation();
   const [activeHash, setActiveHash] = useState("");
 
@@ -68,7 +69,7 @@ const Navbar = ({ links }: NavBarType) => {
             })}
           </div>
           <div className="hidden md:flex justify-center items-center">
-            <DarkToggle />
+            <DarkToggle initialTheme={initialTheme} />
           </div>
         </div>
       </div>

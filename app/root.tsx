@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -14,10 +18,12 @@ import { twMerge } from "tailwind-merge";
 import Brands, { BrandsType } from "./components/Brands/Brands";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
+import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
 import Projects, { ProjectsType } from "./components/Projects";
 import Skills from "./components/Skills";
 import Testimonials, { TestimonialsType } from "./components/Testimonials";
+import { getTheme, Theme } from "./hooks/useTheme";
 import "./index.css";
 import { contentfulClient } from "./services/contentful";
 import "./tailwind.css";
@@ -26,7 +32,6 @@ import {
   ProjectSkeleton,
   TestimonialSkeleton,
 } from "./types/models";
-import Hero from "./components/Hero/Hero";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -52,7 +57,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export async function loader() {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const response = await contentfulClient.getEntries<ProjectSkeleton>({
     content_type: "projects",
     order: ["-fields.weight", "fields.isFeatured"],
@@ -121,11 +126,13 @@ export async function loader() {
     projects,
     testimonials,
     brands,
+    theme: getTheme(request) as Theme,
   };
-}
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { projects, testimonials, brands } = useLoaderData<typeof loader>();
+  const { projects, testimonials, brands, theme } =
+    useLoaderData<typeof loader>();
   const LINKS = [
     {
       to: "#projects",
@@ -143,7 +150,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   ].filter((l) => l.render !== false);
 
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en" data-theme={theme || "light"}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -160,8 +167,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           "min-h-screen bg-white text-neutral-700 overflow-x-hidden"
         )}
       >
-        <Navbar links={LINKS} />
-
+        <Navbar links={LINKS} initialTheme={theme} />
         <main>
           <Hero />
           <Brands {...brands} />

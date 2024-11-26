@@ -1,19 +1,18 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { useTheme, UseThemeProps } from "~/hooks/useTheme";
 import MoonIcon from "~/icons/MoonIcon";
 import SunIcon from "~/icons/SunIcon";
 
-const DarkToggle = ({ className }: { className?: string }) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  function toggle() {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  }
+const DarkToggle = ({
+  className,
+  initialTheme,
+}: { className?: string } & UseThemeProps) => {
+  const { toggleTheme, theme } = useTheme({ initialTheme });
 
   return (
     <motion.button
-      onClick={toggle}
+      onClick={toggleTheme}
       className={twMerge("relative", className)}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
