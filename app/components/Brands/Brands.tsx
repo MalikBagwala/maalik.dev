@@ -11,14 +11,23 @@ export type BrandsType = {
 };
 
 const Brands = ({ brands }: BrandsType) => {
-  const clients = brands.filter((b) => !b.isEmployer);
-
+  const [employers, clients] = brands.reduce<[BrandType[], BrandType[]]>(
+    (prev, brand) => {
+      if (brand.isEmployer) {
+        prev[0].push(brand);
+      } else {
+        prev[1].push(brand);
+      }
+      return prev;
+    },
+    [[], []]
+  );
   return (
     <div className="border-b border-neutral-200">
       <div className="container py-8">
         {clients?.length > 0 ? (
-          <div className="text-center flex flex-col gap-y-12 mt-12 lg:mt-0">
-            <p className="font-semibold text uppercase text-neutral-600 tracking-wide">
+          <div className="text-center flex flex-col gap-y-12 mt-12 lg:mt-0 text-neutral-600">
+            <p className="font-semibold text uppercase tracking-wide">
               At agency side, client side or as freelancer
             </p>
             <div className="flex gap-10 flex-wrap items-center justify-center">
@@ -35,6 +44,27 @@ const Brands = ({ brands }: BrandsType) => {
                 );
               })}
             </div>
+            {employers.length > 0 && (
+              <div className="text-lg text-balance mx-20">
+                Hired by innovative product based companies, like{" "}
+                {employers.map((employer, index) => {
+                  const isLast = index === employers.length - 1;
+                  return (
+                    <>
+                      {employers.length > 1 ? (isLast ? " and " : ", ") : null}
+                      <a
+                        key={employer.name}
+                        className="text-primary hover:opacity-80 font-semibold"
+                        href={employer.url}
+                      >
+                        {employer.name}
+                      </a>
+                    </>
+                  );
+                })}
+                .
+              </div>
+            )}
           </div>
         ) : null}
       </div>
