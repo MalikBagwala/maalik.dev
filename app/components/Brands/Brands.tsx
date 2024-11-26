@@ -1,3 +1,5 @@
+import { Fragment } from "react/jsx-runtime";
+
 export type BrandType = {
   weight: number;
   name: string;
@@ -50,7 +52,7 @@ const Brands = ({ brands }: BrandsType) => {
                 {employers.map((employer, index) => {
                   const isLast = index === employers.length - 1;
                   return (
-                    <>
+                    <Fragment key={employer.url}>
                       {employers.length > 1 ? (isLast ? " and " : ", ") : null}
                       <a
                         key={employer.name}
@@ -59,7 +61,7 @@ const Brands = ({ brands }: BrandsType) => {
                       >
                         {employer.name}
                       </a>
-                    </>
+                    </Fragment>
                   );
                 })}
                 .
