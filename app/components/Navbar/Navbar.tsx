@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import DarkToggle from "../DarkToggle/DarkToggle";
 
 export type LinkType = {
   to: string;
@@ -65,6 +66,9 @@ const Navbar = ({ links }: NavBarType) => {
                 </NavLink>
               );
             })}
+          </div>
+          <div className="hidden md:flex justify-center items-center">
+            <DarkToggle />
           </div>
         </div>
       </div>
