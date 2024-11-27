@@ -26,6 +26,7 @@ export function useTheme({ initialTheme }: UseThemeProps) {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.className = theme;
   }, [theme]);
 
   return { toggleTheme, theme };
