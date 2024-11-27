@@ -68,13 +68,13 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
             className={twMerge(
               "absolute top-12 lg:top-24 bottom-0 left-1/2 h-[calc(100dvh-3rem)] lg:h-[calc(100dvh-7rem)] overflow-y-auto",
               "w-full max-w-full lg:max-w-4xl",
-              "bg-white text-neutral-600 border-t lg:border border-neutral-300 p-6 rounded-t-lg lg:rounded-b-lg shadow-xl cursor-default"
+              "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border-t lg:border border-neutral-300 dark:border-neutral-700 p-6 rounded-t-lg lg:rounded-b-lg shadow-xl cursor-default"
             )}
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 h-8 w-8 flex items-center justify-center border rounded-full text-neutral-600 hover:bg-neutral-100"
+              className="absolute top-4 right-4 h-8 w-8 flex items-center justify-center border rounded-full text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:border-neutral-700 dark:hover:bg-neutral-600"
               aria-label="Close"
             >
               ✕
@@ -88,7 +88,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
                 alt=""
               />
               <div className="flex flex-col gap-y-2">
-                <h1 className="font-bold text-lg text-neutral-800">
+                <h1 className="font-bold text-lg text-neutral-800 dark:text-neutral-300">
                   {project.title}
                 </h1>
                 <p>{project.description}</p>
@@ -101,7 +101,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-4 py-2 rounded-md border text-neutral-800"
+                    className="px-4 py-2 rounded-md border text-neutral-800 dark:text-neutral-400 dark:border-neutral-400"
                   >
                     {tech}
                   </span>
@@ -110,7 +110,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: project.body || "" }}
-              className="prose mt-6"
+              className="prose mt-6 dark:text-neutral-300"
             ></div>
             {(project.liveLink || project.sourceCodeLink) && (
               <footer className="mt-4 flex gap-4">
@@ -121,7 +121,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
                     }}
                     target="__blank"
                     href={project.liveLink}
-                    className="px-4 py-2 rounded-md border text-primary text-lg w-fit"
+                    className="px-4 py-2 rounded-md border text-blue-600 dark:text-blue-400 text-lg w-fit"
                   >
                     Visit
                   </motion.a>
@@ -133,7 +133,7 @@ const SpringModal = ({ isOpen, onClose, project }: SpringModalType) => {
                     }}
                     target="__blank"
                     href={project.sourceCodeLink}
-                    className="px-4 py-2 rounded-md border text-primary text-lg flex items-center gap-1 w-fit"
+                    className="px-4 py-2 rounded-md border text-blue-600 dark:text-blue-400 text-lg flex items-center gap-1 w-fit"
                   >
                     <Github fill="currentColor" height={24} />{" "}
                     <span>Source Code</span>

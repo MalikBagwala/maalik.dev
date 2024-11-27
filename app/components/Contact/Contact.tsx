@@ -20,13 +20,13 @@ const Contact = () => {
         <div className="flex flex-col gap-4 lg:gap-6">
           <motion.p
             variants={itemVariants}
-            className="text-3xl lg:text-4xl text-neutral-800 font-bold"
+            className="text-3xl lg:text-4xl text-neutral-800 dark:text-neutral-400 font-bold"
           >
             In need of a developer?
           </motion.p>
           <motion.p
             variants={itemVariants}
-            className="text-xl lg:text-2xl text-primary"
+            className="text-xl lg:text-2xl text-blue-600 dark:text-blue-400 flex items-center gap-3"
           >
             <Pulse /> I’m currently available for work.
           </motion.p>
@@ -48,15 +48,17 @@ const Contact = () => {
             </motion.a>
             <motion.span
               variants={itemVariants}
-              className="text-sm text-neutral-500"
+              className="text-sm text-neutral-500 dark:text-neutral-400"
             >
               Also available on{" "}
-              <span className="text-neutral-700">facetime</span>
+              <span className="text-neutral-700 dark:text-neutral-500">
+                facetime
+              </span>
             </motion.span>
           </div>
           <motion.a
             variants={itemVariants}
-            className="text-neutral-500 hover:text-primary font-semibold transition-colors"
+            className="text-neutral-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 font-semibold transition-colors"
             href="mailto:hello@maalik.dev"
           >
             hello@maalik.dev

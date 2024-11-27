@@ -3,16 +3,18 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import DarkToggle from "../DarkToggle/DarkToggle";
+import { UseThemeProps } from "~/hooks/useTheme";
 
 export type LinkType = {
   to: string;
   name: string;
 };
-export type NavBarType = {
+export type NavBarType = UseThemeProps & {
   links: LinkType[];
 };
 
-const Navbar = ({ links }: NavBarType) => {
+const Navbar = ({ links, initialTheme }: NavBarType) => {
   const { hash } = useLocation();
   const [activeHash, setActiveHash] = useState("");
 
@@ -34,12 +36,13 @@ const Navbar = ({ links }: NavBarType) => {
           <div className="flex flex-shrink-0 gap-2 items-center mr-auto">
             <img src="/logo.webp" height={24} width={24} alt="Logo" />
             <Link to={"/"}>
-              <motion.h1 className="bg-clip-text text-transparent bg-gradient-to-r from-secondary-light to-primary-light font-bold">
+              <motion.h1 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-400 font-bold">
                 maalik.dev
               </motion.h1>
             </Link>
           </div>
-          <div className="visible md:hidden flex justify-center items-center">
+          <div className="visible md:hidden flex justify-center items-center gap-4">
+            <DarkToggle initialTheme={initialTheme} />
             <MobileMenu activeSection={activeHash} links={links} />
           </div>
           <div className="hidden md:flex gap-6 mr-2">
@@ -57,7 +60,7 @@ const Navbar = ({ links }: NavBarType) => {
                     }}
                     className={twMerge(
                       "transition-colors ease-out",
-                      isActive && "text-primary-light"
+                      isActive && "text-blue-400"
                     )}
                   >
                     {link.name}
@@ -65,6 +68,9 @@ const Navbar = ({ links }: NavBarType) => {
                 </NavLink>
               );
             })}
+          </div>
+          <div className="hidden md:flex justify-center items-center">
+            <DarkToggle initialTheme={initialTheme} />
           </div>
         </div>
       </div>

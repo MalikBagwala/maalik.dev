@@ -43,9 +43,9 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
           boxShadow: "0 2px 4px 0 rgba(14, 30, 37, 0.12)",
         }}
         className={twMerge(
-          "rounded-xl px-6 py-8 flex flex-col justify-between text-neutral-500 h-fit bg-white relative",
+          "rounded-xl px-6 py-8 flex flex-col justify-between text-neutral-500 h-fit bg-white dark:bg-neutral-700 dark:text-neutral-300 relative",
           isHighlight &&
-            "bg-gradient-to-r from-secondary to-primary text-neutral-50"
+            "bg-gradient-to-r from-teal-500 to-blue-600 dark:from-teal-600 dark:to-blue-700 text-neutral-50 dark:text-neutral-200"
         )}
       >
         <blockquote
@@ -64,8 +64,8 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
           <div>
             <h6
               className={twMerge(
-                "text-neutral-800 font-bold",
-                isHighlight && "text-white"
+                "text-neutral-800 dark:text-neutral-300 font-bold",
+                isHighlight && "text-white dark:text-neutral-50"
               )}
             >
               {testimonial.name}
@@ -76,16 +76,19 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
         {isHighlight && (
           <>
             <Star
-              className="absolute top-6 -left-[12px] fill-accent-light"
+              className="absolute top-6 -left-[12px] fill-amber-400"
               height={30}
             />
-            <Star className="absolute -top-2 left-8 fill-accent" height={20} />
             <Star
-              className="absolute top-6 -right-[12px] fill-accent-light"
+              className="absolute -top-2 left-8 fill-amber-600"
+              height={20}
+            />
+            <Star
+              className="absolute top-6 -right-[12px] fill-amber-400"
               height={12}
             />
             <Star
-              className="absolute -bottom-5 right-12 fill-accent"
+              className="absolute -bottom-5 right-12 fill-amber-600"
               height={40}
             />
           </>

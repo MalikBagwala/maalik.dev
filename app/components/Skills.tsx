@@ -91,7 +91,7 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
           "0 2px 6px 0 rgba(0, 0, 0, .05), 0 0 3px 0 rgba(0, 0, 0, .1)",
       }}
       animate={inView ? "show" : undefined}
-      className="p-4 rounded-lg flex flex-col items-center justify-center m-2 w-32 h-32 gap-4"
+      className="p-4 rounded-lg flex flex-col items-center justify-center m-2 w-32 h-32 gap-4 dark:bg-neutral-800"
     >
       <img
         loading="lazy"
@@ -100,7 +100,9 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
         alt={""}
         width={"auto"}
       />
-      <p className="font-bold text-neutral-800">{skill.name}</p>
+      <p className="font-bold text-neutral-800 dark:text-neutral-400">
+        {skill.name}
+      </p>
     </motion.li>
   );
 };

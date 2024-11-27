@@ -13,24 +13,7 @@ export default {
       lg: "1024px",
       xl: "1172px",
     },
-
     extend: {
-      colors: {
-        primary: {
-          light: "hsl(var(--color-primary), 85%, <alpha-value>)",
-          DEFAULT: "hsl(var(--color-primary), 53%, <alpha-value>)",
-        },
-        secondary: {
-          light: "hsl(var(--color-secondary), 55%, <alpha-value>)",
-          DEFAULT: "hsl(var(--color-secondary), 32%, <alpha-value>)",
-        },
-        accent: {
-          light: "hsl(var(--color-accent), 55%, <alpha-value>)",
-          DEFAULT: "hsl(var(--color-accent), 32%, <alpha-value>)",
-        },
-        neutral: {},
-        base: {},
-      },
       container: {
         center: true,
         padding: {
