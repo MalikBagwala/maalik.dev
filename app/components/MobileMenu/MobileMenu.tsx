@@ -31,7 +31,7 @@ const MobileMenu = ({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="flex justify-center items-center fixed bg-white w-full top-[44px] h-[calc(100dvh-44px)] left-0 p-4 text-neutral-600 z-10"
+            className="flex justify-center items-center fixed bg-white dark:bg-neutral-800 w-full top-[44px] h-[calc(100dvh-44px)] left-0 p-4 text-neutral-600 dark:text-neutral-400 z-10"
             initial={{ opacity: 0, x: "100vw" }} // Start with opacity 0 and slide in from the right
             animate={{ opacity: 1, x: 0 }} // Fade in and slide down
             exit={{ opacity: 0, x: "100vw" }} // Fade out and slide back to the right
@@ -53,7 +53,7 @@ const MobileMenu = ({
                     <motion.li
                       className={twMerge(
                         "text-center text-4xl font-bold mt-8",
-                        isActive && "text-blue-600"
+                        isActive && "text-blue-600 dark:text-blue-400"
                       )}
                       variants={{
                         hidden: { opacity: 0, y: 20 }, // Start off-screen with opacity 0

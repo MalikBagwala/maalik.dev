@@ -41,7 +41,8 @@ const Navbar = ({ links, initialTheme }: NavBarType) => {
               </motion.h1>
             </Link>
           </div>
-          <div className="visible md:hidden flex justify-center items-center">
+          <div className="visible md:hidden flex justify-center items-center gap-4">
+            <DarkToggle initialTheme={initialTheme} />
             <MobileMenu activeSection={activeHash} links={links} />
           </div>
           <div className="hidden md:flex gap-6 mr-2">
