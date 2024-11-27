@@ -24,7 +24,7 @@ const Project = (project: ProjectProps) => {
       ref={ref}
       initial={{ opacity: 0, translateY: 100 }}
       animate={inView ? { opacity: 1, translateY: 0 } : undefined}
-      className="relative rounded-lg border mb-10 last:mb-0 shadow-lg text-neutral-700 bg-white overflow-hidden"
+      className="relative rounded-lg border dark:border-neutral-700 mb-10 last:mb-0 shadow-lg text-neutral-700 bg-white dark:bg-neutral-900 overflow-hidden"
     >
       {/* Featured Tag */}
       {isFeatured && (
@@ -65,11 +65,11 @@ const Project = (project: ProjectProps) => {
         </Link>
       </div>
       <div className="p-4">
-        <p className="text-neutral-800 text-xl lg:text-2xl font-bold tracking-wider mb-2">
+        <p className="text-neutral-800 dark:text-neutral-300 text-xl lg:text-2xl font-bold tracking-wider mb-2">
           {title}
         </p>
         <article
-          className="prose leading-relaxed text-lg"
+          className="prose leading-relaxed text-lg dark:text-neutral-500"
           dangerouslySetInnerHTML={{ __html: description }}
         ></article>
       </div>
