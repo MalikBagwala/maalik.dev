@@ -1,11 +1,11 @@
 :root {
-  --color-primary: 221, 83%;
+  --color-blue-600: 221, 83%;
   --color-secondary: 175, 84%;
-  --color-accent: 43, 96%;
+  --color-amber-600: 43, 96%;
   --color-neutral: 243, 244, 246; /* Light Gray */
   --color-base: 255, 255, 255; /* White */
 }
 
 :root[data-theme="dark"] {
-  --color-primary: 221, 83%;
+  --color-blue-600: 221, 83%;
 }

@@ -56,7 +56,7 @@ const Brands = ({ brands }: BrandsType) => {
                       {employers.length > 1 ? (isLast ? " and " : ", ") : null}
                       <a
                         key={employer.name}
-                        className="text-primary hover:opacity-80 font-semibold"
+                        className="text-blue-600 hover:opacity-80 font-semibold"
                         href={employer.url}
                       >
                         {employer.name}

@@ -53,7 +53,7 @@ const MobileMenu = ({
                     <motion.li
                       className={twMerge(
                         "text-center text-4xl font-bold mt-8",
-                        isActive && "text-primary"
+                        isActive && "text-blue-600"
                       )}
                       variants={{
                         hidden: { opacity: 0, y: 20 }, // Start off-screen with opacity 0

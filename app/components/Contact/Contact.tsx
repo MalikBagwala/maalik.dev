@@ -26,7 +26,7 @@ const Contact = () => {
           </motion.p>
           <motion.p
             variants={itemVariants}
-            className="text-xl lg:text-2xl text-primary"
+            className="text-xl lg:text-2xl text-blue-600"
           >
             <Pulse /> I’m currently available for work.
           </motion.p>
@@ -56,7 +56,7 @@ const Contact = () => {
           </div>
           <motion.a
             variants={itemVariants}
-            className="text-neutral-500 hover:text-primary font-semibold transition-colors"
+            className="text-neutral-500 hover:text-blue-600 font-semibold transition-colors"
             href="mailto:hello@maalik.dev"
           >
             hello@maalik.dev

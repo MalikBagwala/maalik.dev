@@ -45,7 +45,7 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
         className={twMerge(
           "rounded-xl px-6 py-8 flex flex-col justify-between text-neutral-500 h-fit bg-white relative",
           isHighlight &&
-            "bg-gradient-to-r from-secondary to-primary text-neutral-50"
+            "bg-gradient-to-r from-teal-500 to-blue-600 text-neutral-50"
         )}
       >
         <blockquote
@@ -76,16 +76,19 @@ const Testimonial = ({ index, testimonial }: TestimonialType) => {
         {isHighlight && (
           <>
             <Star
-              className="absolute top-6 -left-[12px] fill-accent-light"
+              className="absolute top-6 -left-[12px] fill-amber-400"
               height={30}
             />
-            <Star className="absolute -top-2 left-8 fill-accent" height={20} />
             <Star
-              className="absolute top-6 -right-[12px] fill-accent-light"
+              className="absolute -top-2 left-8 fill-amber-600"
+              height={20}
+            />
+            <Star
+              className="absolute top-6 -right-[12px] fill-amber-400"
               height={12}
             />
             <Star
-              className="absolute -bottom-5 right-12 fill-accent"
+              className="absolute -bottom-5 right-12 fill-amber-600"
               height={40}
             />
           </>
