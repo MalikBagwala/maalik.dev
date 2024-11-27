@@ -17,3 +17,10 @@
   @apply scroll-smooth;
 }
 @tailwind utilities;
+
+@layer base {
+  /* Dark theme background */
+  html.dark section#hero {
+    @apply bg-neutral-900;
+  }
+}

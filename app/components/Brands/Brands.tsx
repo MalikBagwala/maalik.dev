@@ -25,10 +25,10 @@ const Brands = ({ brands }: BrandsType) => {
     [[], []]
   );
   return (
-    <div className="border-b border-neutral-200">
+    <div className="border-b border-neutral-200 text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">
       <div className="container py-8">
         {clients?.length > 0 ? (
-          <div className="text-center flex flex-col gap-y-12 mt-12 lg:mt-0 text-neutral-600">
+          <div className="text-center flex flex-col gap-y-12 mt-12 lg:mt-0 ">
             <p className="font-semibold text uppercase tracking-wide">
               At agency side, client side or as freelancer
             </p>
@@ -56,7 +56,7 @@ const Brands = ({ brands }: BrandsType) => {
                       {employers.length > 1 ? (isLast ? " and " : ", ") : null}
                       <a
                         key={employer.name}
-                        className="text-blue-600 hover:opacity-80 font-semibold"
+                        className="text-blue-600 dark:text-blue-500 hover:opacity-80 font-semibold"
                         href={employer.url}
                       >
                         {employer.name}
