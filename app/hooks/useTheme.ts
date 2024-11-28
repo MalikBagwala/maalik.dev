@@ -1,4 +1,3 @@
-import { useMediaQuery } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 
 export type Theme = "light" | "dark";
@@ -13,10 +12,7 @@ export const getTheme = (request: Request) => {
   return match ? match[1] : "light";
 };
 export function useTheme({ initialTheme }: UseThemeProps) {
-  const isDarkOS = useMediaQuery("(prefers-color-scheme: dark)");
-  const osTheme: Theme = isDarkOS ? "dark" : "light";
-  const [theme, setTheme] = useState(initialTheme ?? osTheme);
-
+  const [theme, setTheme] = useState(initialTheme || "light");
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
