@@ -69,7 +69,7 @@ const Project = (project: ProjectProps) => {
           {title}
         </p>
         <article
-          className="prose leading-relaxed text-lg dark:text-neutral-500"
+          className="prose dark:prose-invert leading-relaxed text-lg dark:text-neutral-500"
           dangerouslySetInnerHTML={{ __html: description }}
         ></article>
       </div>
