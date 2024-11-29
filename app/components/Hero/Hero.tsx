@@ -21,7 +21,7 @@ const Hero = () => {
   return (
     <section id="hero" className="content relative">
       <div
-        className="absolute top-0 left-0 right-0 bottom-0 opacity-60 dark:opacity-90 dark:contrast-[0.1] z-0"
+        className="absolute top-0 left-0 right-0 bottom-0 opacity-50 dark:opacity-90 dark:contrast-[0.1] z-0"
         style={{
           background: "url(/circuit.svg)",
           maskImage: "linear-gradient(to bottom, black, transparent)",
@@ -52,7 +52,7 @@ const Hero = () => {
             >
               I help people and brands reach their business goals by designing &
               building{" "}
-              <motion.span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-400 font-bold">
+              <motion.span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-600 dark:from-teal-400 dark:to-blue-400 font-bold">
                 customer-centric software products
               </motion.span>{" "}
               and interactive experiences
