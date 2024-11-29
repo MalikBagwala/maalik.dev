@@ -5,20 +5,26 @@ export type ButtonProps<T extends ElementType> = {
   as?: T;
   className?: string;
   children: ReactNode;
+  size?: "default" | "large"; // Add size prop
 } & ComponentPropsWithoutRef<T>;
 
 const Button = <T extends ElementType = "button">({
   as,
   className,
   children,
+  size = "default", // Default size is "default"
   ...props
 }: ButtonProps<T>) => {
   const Component = as || "button";
 
+  // Define size-specific styles
+  const sizeClasses =
+    size === "large" ? "px-10 py-4 text-xl" : "px-8 py-3 text-lg";
+
   return (
     <Component
       className={twMerge(
-        "text-white px-8 py-3 text-lg shadow-md relative text-opacity-95",
+        "text-white shadow-md relative text-opacity-95",
         "bg-gradient-to-r from-teal-600 to-blue-600",
         "rounded-full font-semibold",
         "transition-all duration-300 ease-in-out",
@@ -28,6 +34,7 @@ const Button = <T extends ElementType = "button">({
         "before:rounded-full before:transition-opacity before:duration-300",
         "before:opacity-0 hover:before:opacity-100",
         "overflow-hidden",
+        sizeClasses, // Add size-specific classes
         className
       )}
       {...props}
