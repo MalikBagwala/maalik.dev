@@ -19,7 +19,9 @@ const Button = <T extends ElementType = "button">({
 
   // Define size-specific styles
   const sizeClasses =
-    size === "large" ? "px-10 py-4 text-xl" : "px-8 py-3 text-lg";
+    size === "large"
+      ? "px-8 py-3 text-lg lg:px-10 lg:py-4 lg:text-xl"
+      : "px-8 py-3 text-lg";
 
   return (
     <Component

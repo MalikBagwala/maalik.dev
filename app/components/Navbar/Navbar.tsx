@@ -29,7 +29,7 @@ const Navbar = ({ links, initialTheme }: NavBarType) => {
         background: "rgba(22, 22, 23, .8)",
         color: "#fffc",
       }}
-      className="fixed lg:top-[1rem] left-1/2 transform -translate-x-1/2 lg:rounded-full lg:min-w-sm z-10 !px-0 text-sm w-full lg:w-fit"
+      className="fixed lg:top-[1rem] left-1/2 transform -translate-x-1/2 lg:rounded-full lg:min-w-sm z-20 !px-0 text-sm w-full lg:w-fit"
     >
       <div className="container px-4 p-2 lg:px-2">
         <div className="flex justify-center items-center gap-x-16">

@@ -47,7 +47,7 @@ const Hero = () => {
               />
             </motion.p>
             <motion.h2
-              className="text-balance text-4xl text-neutral-800 dark:text-neutral-200 select-text font-bold leading-snug"
+              className="text-balance text-3xl lg:text-4xl text-neutral-800 dark:text-neutral-200 select-text font-bold leading-tight lg:leading-snug"
               variants={itemVariants}
             >
               I help people and brands reach their business goals by designing &
@@ -66,7 +66,7 @@ const Hero = () => {
                 View my work
               </Button>
               <a
-                className="text-lg font-semibold text-teal-600 dark:text-teal-500"
+                className="lg:text-lg font-semibold text-teal-600 dark:text-teal-500"
                 href={SOCIALS[0].link}
                 target="__blank"
               >
