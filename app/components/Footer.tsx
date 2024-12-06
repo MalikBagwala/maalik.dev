@@ -7,6 +7,7 @@ import Linkedin from "~/icons/Linkedin";
 import Twitter from "~/icons/Twitter";
 import Upwork from "~/icons/Upwork";
 import { containerVariants, itemVariants } from "./Hero/Hero.animations";
+import Heart from "~/icons/Heart";
 export const SOCIALS = [
   {
     icon: <Linkedin height={22} className="social" />,
@@ -115,6 +116,10 @@ const Footer = () => {
             ))}
           </motion.div>
         </motion.div>
+      </motion.div>
+      <motion.div className="py-4 text-center text-neutral-700 dark:text-neutral-500 text-lg flex items-center justify-center">
+        Built with <Heart className="size-5 text-red-700 inline mx-1" /> in
+        <span className="ml-1">🇮🇳</span>
       </motion.div>
     </Section>
   );
