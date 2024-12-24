@@ -91,15 +91,24 @@ const Skill = ({ skill, index }: { skill: any; index: number }) => {
           "0 2px 6px 0 rgba(0, 0, 0, .05), 0 0 3px 0 rgba(0, 0, 0, .1)",
       }}
       animate={inView ? "show" : undefined}
-      className="p-4 rounded-lg flex flex-col items-center justify-center m-2 w-32 h-32 gap-4 dark:bg-neutral-800"
+      className="p-4 rounded-lg flex flex-col items-center justify-center m-2 w-32 h-32 gap-4 dark:bg-neutral-800 overflow-hidden"
     >
-      <img
+      <div
+        className="h-10 w-14 relative backlight dark:brightness-150"
+        style={{
+          backgroundImage: `url(${skill.logo})`,
+          backgroundPosition: "center",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      {/* <img
         loading="lazy"
         className="h-10 w-auto dark:brightness-150"
         src={skill.logo}
         alt={""}
         width={"auto"}
-      />
+      /> */}
       <p className="font-bold text-neutral-800 dark:text-neutral-400">
         {skill.name}
       </p>
