@@ -23,4 +23,15 @@
   html.dark section#hero {
     @apply bg-neutral-900;
   }
+
+  .backlight:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 30%;
+    position: absolute;
+    background: inherit;
+    filter: blur(20px) blur(20px);
+    z-index: 1;
+  }
 }
