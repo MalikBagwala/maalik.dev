@@ -6,6 +6,7 @@ export type BrandType = {
   url: string;
   logo: string;
   isEmployer: boolean;
+  currentlyWorkingHere: boolean;
 };
 export type BrandsType = {
   brands: BrandType[];
