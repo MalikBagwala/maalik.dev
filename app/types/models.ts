@@ -43,5 +43,6 @@ export type BrandSkeleton = {
     url: EntryFieldTypes.Text;
     logo: EntryFieldTypes.AssetLink;
     isEmployer: EntryFieldTypes.Boolean;
+    currentlyWorkingHere: EntryFieldTypes.Boolean;
   };
 };
