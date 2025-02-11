@@ -118,6 +118,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         weight: item.fields.weight,
         url: item.fields.url,
         logo: (item.fields.logo as any)?.fields?.file?.url,
+        currentlyWorkingHere: item.fields.currentlyWorkingHere,
       };
     }),
     total: bResponse.total,
