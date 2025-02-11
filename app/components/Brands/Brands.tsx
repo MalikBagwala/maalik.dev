@@ -49,12 +49,16 @@ const Brands = ({ brands }: BrandsType) => {
             </div>
             {employers.length > 0 && (
               <div className="text-lg text-balance mx-20">
-                Hired by innovative product based companies, like{" "}
+                Hired by innovative product-based companies like{" "}
                 {employers.map((employer, index) => {
                   const isLast = index === employers.length - 1;
                   return (
                     <Fragment key={employer.url}>
-                      {employers.length > 1 ? (isLast ? " and " : ", ") : null}
+                      {employers.length > 1 && index > 0
+                        ? isLast
+                          ? " and "
+                          : ", "
+                        : null}
                       <a
                         key={employer.name}
                         className="text-blue-600 dark:text-blue-400 hover:opacity-80 font-semibold"
