@@ -80,7 +80,7 @@ const Hero = () => {
               initial="hidden"
               animate={isMounted ? "show" : "hidden"}
               variants={imageVariants}
-              className="mb-auto h-[20vh] lg:h-[30vh] w-fit rounded-md"
+              className="mb-auto h-[20vh] lg:h-[30vh] w-fit rounded-3xl"
               height={180}
               width={180}
               src="/avatar.webp"
